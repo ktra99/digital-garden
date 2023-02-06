@@ -122,7 +122,12 @@ export default function Layout({
         </div>
       </nav>
       {children}
-      <div className="fixed bottom-0 z-20 flex w-full items-center justify-center space-x-8 rounded-t-3xl bg-black bg-opacity-40 p-4 text-white backdrop-blur-sm xs:space-x-12 xs:p-8 sm:hidden">
+      <div
+        className={clsx(
+          route.includes("/posts/") && "hidden",
+          "fixed bottom-0 z-20 flex w-full items-center justify-center space-x-8 rounded-t-3xl bg-black bg-opacity-40 p-4 text-white backdrop-blur-sm xs:space-x-12 xs:p-8 sm:hidden"
+        )}
+      >
         <Link href="/">
           <HomeIcon
             className={clsx(
