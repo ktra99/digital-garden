@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#mdx a{
+  color: #FAB0EB;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+#mdx h2{
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+
+#mdx img{
+  border-radius: 0.5rem;
+}
+
+#mdx ol, #mdx ul{
+  padding-left: 1.5rem;
+  list-style-type: decimal;
+}
+
+#mdx table *{
+  padding: 1rem;
+  text-align: left;
+  border: 1px solid white;
+}
+
+li{
+  padding-left: 1rem;
+}
+
+pre code{
+  padding: 2rem !important;
+  border-radius: 0.75rem !important;
+}
+
+body{
+  background-color: #5A64DE;
+  font-family: 'Lekton', sans-serif;
+}
