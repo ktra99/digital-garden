@@ -26,7 +26,12 @@ export default function Layout({
           <Link href="/" scroll={false}>
             <Image src={K} alt="brand logotype" className="h-6 w-6" />
           </Link>
-          <div className="hidden space-x-12 text-lg font-semibold text-white sm:block">
+          <div
+            className={clsx(
+              route.includes("/posts/") && "sm:hidden",
+              "hidden space-x-12 text-lg font-semibold text-white sm:block"
+            )}
+          >
             <Link
               href="/"
               className={clsx(
