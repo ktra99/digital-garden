@@ -20,7 +20,7 @@
     "@types/react-dom": "18.0.10",
     "@vercel/analytics": "^0.1.8",
     "clsx": "^1.2.1",
-    "eslint": "8.33.0",
+    "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "framer-motion": "^9.0.1",
     "glob": "^8.1.0",
