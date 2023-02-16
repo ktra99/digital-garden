@@ -27,7 +27,7 @@ This is my digital garden built on Next.js and MDX. Feel free to contribute and 
 - Rehype-highlight
 
 ## To-do
-- [ ] Navigation
+- [x] Navigation
 - [ ] Projects page 
 - [ ] Contact form
 - [ ] Dashboard
