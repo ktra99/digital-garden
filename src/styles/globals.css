@@ -10,6 +10,11 @@
   text-decoration: underline;
 }
 
+#mdx h1{
+  font-weight: 700;
+  font-size: 2.25rem;
+}
+
 #mdx h2{
   font-weight: 600;
   font-size: 1.75rem;

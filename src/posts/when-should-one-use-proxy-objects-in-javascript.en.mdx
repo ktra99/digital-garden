@@ -1,0 +1,78 @@
+---
+title: When should one use proxy objects in JavaScript?
+tag: JAVASCRIPT
+time: 3 MIN READ
+excerpt: Proxy objects in JavaScript are a powerful feature that allow you to intercept and customize operations performed on objects. In this post, we'll explore when and how you should use Proxy objects in your JavaScript code.
+date: 2023-02-03
+---
+
+In ECMAScript 6, JavaScript introduced a powerful feature called Proxy objects. A Proxy object is an object that wraps another object and allows you to intercept and customize operations performed on that object. With Proxy objects, you can add custom behavior to objects, change the way they behave, and even prevent certain operations from happening altogether.
+
+So, when should you use Proxy objects in your JavaScript code? Let's explore some use cases.
+
+## Use case 1: Validation
+
+One of the most common use cases for Proxy objects is data validation. When you create a new object, you can use a Proxy to validate that the data being set on the object meets certain requirements.
+
+For example, let's say we have an object representing a person's age:
+
+```JavaScript
+const person = { age: 25 };
+```
+
+We want to make sure that the age is always a positive integer. We can use a Proxy to intercept any attempts to set the age property, and validate the value being set:
+
+```JavaScript
+const person = new Proxy({ age: 25 }, {
+  set(target, prop, value) {
+    if (prop === 'age') {
+      if (typeof value !== 'number' || value < 0) {
+        throw new Error('Age must be a positive integer');
+      }
+    }
+    target[prop] = value;
+    return true;
+  }
+});
+```
+
+Now, if we try to set the age to a negative value, we'll get an error:
+
+```JavaScript
+person.age = -1; // throws "Age must be a positive integer"
+```
+
+## Use case 2: Logging
+
+Another use case for Proxy objects is logging. You can use a Proxy to intercept any property access or method calls on an object, and log them for debugging purposes.
+
+For example, let's say we have an object representing a user:
+
+```Javascript
+const user = { name: 'Alice', age: 25 };
+```
+
+We want to log any property access or method call on this object. We can use a Proxy to intercept all these operations and log them to the console:
+
+```Javascript
+const user = new Proxy({ name: 'Alice', age: 25 }, {
+  get(target, prop, receiver) {
+    const value = Reflect.get(target, prop, receiver);
+    console.log(`Getting "${prop}": ${value}`);
+    return value;
+  },
+  apply(target, thisArg, args) {
+    const result = Reflect.apply(target, thisArg, args);
+    console.log(`Calling "${target.name || 'anonymous'}" with arguments: ${args}`);
+    return result;
+  }
+});
+```
+
+Now, any property access or method call on the user object will be logged:
+
+```Javascript
+user.name; // logs "Getting "name": Alice"
+```
+
+It's important to note that while proxies can be a powerful tool, they also add additional complexity to your code, which can make it harder to understand and maintain. As with any programming construct, it's important to use them judiciously and only when they are needed. Understanding their limitations and potential drawbacks is also essential.
