@@ -127,45 +127,47 @@ export default function Layout({
         </div>
       </nav>
       {children}
-      <div
+      <nav
         className={clsx(
           route.includes("/posts/") && "hidden",
-          "fixed bottom-0 z-20 flex w-full items-center justify-center space-x-8 rounded-t-3xl bg-black bg-opacity-75 p-4 text-white backdrop-blur-sm xs:space-x-12 xs:p-8 sm:hidden"
+          "fixed bottom-10 z-20 flex w-full justify-center sm:hidden"
         )}
       >
-        <Link href="/">
-          <HomeIcon
-            className={clsx(
-              route === "/" ? "text-[#FAB0EB]" : "text-white",
-              "h-7 w-7 xs:h-9 xs:w-9"
-            )}
-          />
-        </Link>
-        <a href="#">
-          <ChartBarSquareIcon
-            className={clsx(
-              route === "/dashboard" ? "text-[#FAB0EB]" : "text-white",
-              "h-7 w-7 xs:h-9 xs:w-9"
-            )}
-          />
-        </a>
-        <a href="#">
-          <RectangleStackIcon
-            className={clsx(
-              route === "/projects" ? "text-[#FAB0EB]" : "text-white",
-              "h-7 w-7 xs:h-9 xs:w-9"
-            )}
-          />
-        </a>
-        <a href="#">
-          <EnvelopeIcon
-            className={clsx(
-              route === "/contact" ? "text-[#FAB0EB]" : "text-white",
-              "h-7 w-7 xs:h-9 xs:w-9"
-            )}
-          />
-        </a>
-      </div>
+        <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-3xl bg-black bg-opacity-75 p-4 text-white backdrop-blur-sm xs:max-w-[20rem]">
+          <Link href="/">
+            <HomeIcon
+              className={clsx(
+                route === "/" ? "text-[#FAB0EB]" : "text-white",
+                "h-7 w-7 xs:h-9 xs:w-9"
+              )}
+            />
+          </Link>
+          <a href="#">
+            <ChartBarSquareIcon
+              className={clsx(
+                route === "/dashboard" ? "text-[#FAB0EB]" : "text-white",
+                "h-7 w-7 xs:h-9 xs:w-9"
+              )}
+            />
+          </a>
+          <a href="#">
+            <RectangleStackIcon
+              className={clsx(
+                route === "/projects" ? "text-[#FAB0EB]" : "text-white",
+                "h-7 w-7 xs:h-9 xs:w-9"
+              )}
+            />
+          </a>
+          <a href="#">
+            <EnvelopeIcon
+              className={clsx(
+                route === "/contact" ? "text-[#FAB0EB]" : "text-white",
+                "h-7 w-7 xs:h-9 xs:w-9"
+              )}
+            />
+          </a>
+        </div>
+      </nav>
     </>
   );
 }

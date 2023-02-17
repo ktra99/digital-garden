@@ -199,7 +199,7 @@ export default function Home({
               </AnimatePresence>
             </div>
             <div className="my-6 sm:mb-12 sm:hidden">
-              <div className="flex flex-wrap items-center space-x-2 text-sm xs:text-base">
+              <div className="flex flex-wrap items-center text-sm xs:text-base sm:space-x-2">
                 {locale === "en" &&
                   posts
                     .filter((post: PostMeta) => post.slug.includes(".en"))
@@ -209,7 +209,7 @@ export default function Home({
                         post={post}
                         active={active}
                         setActive={setActive}
-                        className="my-3 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300"
+                        className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
                       />
                     ))}
                 {locale === "sv" &&
@@ -221,7 +221,7 @@ export default function Home({
                         post={post}
                         active={active}
                         setActive={setActive}
-                        className="my-3 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300"
+                        className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
                       />
                     ))}
               </div>
