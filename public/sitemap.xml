@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.ktra99.dev</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/posts/how-to-become-fluent-in-a-foreign-language.en</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv/posts/how-to-become-fluent-in-a-foreign-language.sv</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/posts/how-to-maintain-a-connection-using-webrtc.en</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv/posts/how-to-maintain-a-connection-using-webrtc.sv</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/posts/what-career-paths-are-available-for-web-development-in-2023.en</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv/posts/what-career-paths-are-available-for-web-development-in-2023.sv</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/posts/when-should-one-use-proxy-objects-in-javascript.en</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv/posts/when-should-one-use-proxy-objects-in-javascript.sv</loc><lastmod>2023-02-17T09:53:56.644Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/are-state-management-libraries-like-jotai-or-zustand-any-good.en</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/are-state-management-libraries-like-jotai-or-zustand-any-good.sv</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/how-to-become-fluent-in-a-foreign-language.en</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/how-to-become-fluent-in-a-foreign-language.sv</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/how-to-maintain-a-connection-using-webrtc.en</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/how-to-maintain-a-connection-using-webrtc.sv</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/what-career-paths-are-available-for-web-development-in-2023.en</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/what-career-paths-are-available-for-web-development-in-2023.sv</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/when-should-one-use-proxy-objects-in-javascript.en</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/when-should-one-use-proxy-objects-in-javascript.sv</loc><lastmod>2023-02-17T12:10:57.467Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

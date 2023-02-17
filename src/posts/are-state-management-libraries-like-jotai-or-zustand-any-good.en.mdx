@@ -1,0 +1,73 @@
+---
+title: Are state management libraries like Jotai or Zustand any good?
+tag: REACT
+time: 3 MIN READ
+excerpt: State management libraries like Jotai and Zustand have gained popularity recently, but are they worth using? In this post, we'll explore the benefits of using these libraries and provide some code examples to help you decide whether they're right for your project.
+date: 2023-02-17
+---
+
+![sticky note](https://images.unsplash.com/photo-1580934174026-8142803ebb5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80)
+Image by [@inthemakingstudio](https://unsplash.com/@inthemakingstudio)
+
+## Jotai
+
+Jotai is a small state management library that leverages React's Context API and hooks to provide a simple and elegant solution for managing state. It uses atoms to represent pieces of state and provides hooks to read and write to these atoms.
+
+One of the main benefits of Jotai is its simplicity. It's easy to get started with and has a very small API surface. Here's an example of how to use Jotai to manage a counter:
+
+```jsx
+import { atom, useAtom } from "jotai";
+
+const counterAtom = atom(0);
+
+function Counter() {
+  const [count, setCount] = useAtom(counterAtom);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+In this example, we define an atom using the<Code code="atom"/>function and initialize it with a value of<Code code="0"/>. We then use the<Code code="useAtom"/>hook to read and write to this atom in the<Code code="Counter"/>component.
+
+## Zustand
+
+Zustand is another popular state management library that takes a slightly different approach. It uses a functional programming paradigm to manage state and provides a simple API for creating stores and updating state.
+
+One of the main benefits of Zustand is its flexibility. It's easy to create stores for different pieces of state and compose them as necessary. Here's an example of how to use Zustand to manage a counter:
+
+```jsx
+import create from "zustand";
+
+const useCounter = create((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+}));
+
+function Counter() {
+  const { count, increment } = useCounter();
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+```
+
+In this example, we define a store using the<Code code="create"/>function and initialize it with a state object that includes a<Code code="count"/>value and an<Code code="increment"/> function. We then use the<Code code="useCounter"/>hook to access this store and update the count value in the<Code code="Counter"/>component.
+
+## Conclusion
+
+State management is an important aspect of modern web development, and libraries like Jotai and Zustand can make this task easier and more efficient. Both libraries offer unique features and benefits, and the choice between them ultimately depends on the specific needs and requirements of your project.
+
+Jotai is a great choice for projects that require a lightweight, simple, and unopinionated state management solution that can easily integrate with React. It uses a simple API and leverages the React context to provide a scalable solution for state management.
+
+On the other hand, Zustand provides a more powerful state management solution with a small footprint and minimal setup. It is great for large and complex projects that require more advanced features, such as middleware and selectors. It also works well with other libraries and frameworks.
+
+Overall, both Jotai and Zustand offer excellent state management solutions that can help streamline your web development process. By leveraging these libraries, you can spend less time on state management and more time building and improving your application.
