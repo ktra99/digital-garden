@@ -134,7 +134,7 @@ export default function Layout({
         )}
       >
         <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-full bg-black bg-opacity-75 py-4 px-8 text-white backdrop-blur-sm xs:max-w-[20rem]">
-          <Link href="/">
+          <Link href="/" scroll={false}>
             <HomeIcon
               className={clsx(
                 route === "/" ? "text-[#FAB0EB]" : "text-white",
