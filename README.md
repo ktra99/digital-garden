@@ -28,9 +28,9 @@ This is my digital garden built on Next.js and MDX. Feel free to contribute and 
 
 ## To-do
 - [x] Navigation
+- [x] Dashboard
 - [ ] Projects page 
 - [ ] Contact form
-- [ ] Dashboard
 
 ## License
 
