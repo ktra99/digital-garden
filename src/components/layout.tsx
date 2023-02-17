@@ -9,16 +9,46 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Dispatch, ReactNode, SetStateAction } from "react";
+import { ReactNode } from "react";
 
-export default function Layout({
-  children,
-  setActive,
-}: {
-  children?: ReactNode;
-  setActive: Dispatch<SetStateAction<string[]>>;
-}) {
+export default function Layout({ children }: { children?: ReactNode }) {
   const { push, query, route, locale } = useRouter();
+  const mobileNavigation = [
+    {
+      icon: HomeIcon,
+      href: "/",
+    },
+    {
+      icon: ChartBarSquareIcon,
+      href: "http://dashboard.ktra99.dev/",
+    },
+    {
+      icon: RectangleStackIcon,
+      href: "#",
+    },
+    {
+      icon: EnvelopeIcon,
+      href: "#",
+    },
+  ];
+  const desktopNavigation = [
+    {
+      name: locale === "en" ? "HOME" : "HEM",
+      href: "/",
+    },
+    {
+      name: locale === "en" ? "DASHBOARD" : "DASHBOARD",
+      href: "http://dashboard.ktra99.dev/",
+    },
+    {
+      name: locale === "en" ? "PROJECTS" : "PROJEKT",
+      href: "#",
+    },
+    {
+      name: locale === "en" ? "CONTACT" : "KONTAKT",
+      href: "#",
+    },
+  ];
   return (
     <>
       <nav className="sticky top-0 z-30 py-4 backdrop-blur-md">
@@ -32,52 +62,23 @@ export default function Layout({
               "hidden space-x-12 text-lg font-semibold text-white sm:block"
             )}
           >
-            <Link
-              href="/"
-              className={clsx(
-                route === "/" && "border-b-2 border-[#FAB0EB]",
-                "py-1"
-              )}
-            >
-              {locale === "en" && "HOME"}
-              {locale === "sv" && "HEM"}
-            </Link>
-            <a
-              href="#"
-              className={clsx(
-                route === "/dashboard" && "border-b-2 border-[#FAB0EB]",
-                "py-1"
-              )}
-            >
-              {locale === "en" && "DASHBOARD"}
-              {locale === "sv" && "DASHBOARD"}
-            </a>
-            <a
-              href="#"
-              className={clsx(
-                route === "/projects" && "border-b-2 border-[#FAB0EB]",
-                "py-1"
-              )}
-            >
-              {locale === "en" && "PROJECTS"}
-              {locale === "sv" && "PROJEKT"}
-            </a>
-            <a
-              href="#"
-              className={clsx(
-                route === "/contact" && "border-b-2 border-[#FAB0EB]",
-                "py-1"
-              )}
-            >
-              {locale === "en" && "CONTACT"}
-              {locale === "sv" && "KONTAKT"}
-            </a>
+            {desktopNavigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={clsx(
+                  route === item.href && "border-b-2 border-[#FAB0EB]",
+                  "py-1"
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
           <div className="text-lg font-bold text-[#FAB0EB]">
             <button
               type="button"
-              onClick={() => {
-                setActive([]);
+              onClick={() =>
                 push(
                   query.slug
                     ? "/posts/" + String(query.slug).split(".sv")[0] + ".en"
@@ -89,8 +90,8 @@ export default function Layout({
                     locale: "en",
                     scroll: false,
                   }
-                );
-              }}
+                )
+              }
               className={clsx(
                 locale === "en" ? "text-[#FAB0EB]" : "text-white"
               )}
@@ -101,8 +102,7 @@ export default function Layout({
             |{" "}
             <button
               type="button"
-              onClick={() => {
-                setActive([]);
+              onClick={() =>
                 push(
                   query.slug
                     ? "/posts/" + String(query.slug).split(".en")[0] + ".sv"
@@ -114,8 +114,8 @@ export default function Layout({
                     locale: "sv",
                     scroll: false,
                   }
-                );
-              }}
+                )
+              }
               className={clsx(
                 locale === "sv" ? "text-[#FAB0EB]" : "text-white"
               )}
@@ -134,38 +134,16 @@ export default function Layout({
         )}
       >
         <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-full bg-black bg-opacity-75 py-4 px-8 text-white backdrop-blur-sm xs:max-w-[20rem]">
-          <Link href="/" scroll={false}>
-            <HomeIcon
-              className={clsx(
-                route === "/" ? "text-[#FAB0EB]" : "text-white",
-                "h-7 w-7 xs:h-9 xs:w-9"
-              )}
-            />
-          </Link>
-          <a href="#">
-            <ChartBarSquareIcon
-              className={clsx(
-                route === "/dashboard" ? "text-[#FAB0EB]" : "text-white",
-                "h-7 w-7 xs:h-9 xs:w-9"
-              )}
-            />
-          </a>
-          <a href="#">
-            <RectangleStackIcon
-              className={clsx(
-                route === "/projects" ? "text-[#FAB0EB]" : "text-white",
-                "h-7 w-7 xs:h-9 xs:w-9"
-              )}
-            />
-          </a>
-          <a href="#">
-            <EnvelopeIcon
-              className={clsx(
-                route === "/contact" ? "text-[#FAB0EB]" : "text-white",
-                "h-7 w-7 xs:h-9 xs:w-9"
-              )}
-            />
-          </a>
+          {mobileNavigation.map((item, index) => (
+            <Link key={index} href={item.href} scroll={false}>
+              <item.icon
+                className={clsx(
+                  route === item.href ? "text-[#FAB0EB]" : "text-white",
+                  "h-7 w-7 xs:h-9 xs:w-9"
+                )}
+              />
+            </Link>
+          ))}
         </div>
       </nav>
     </>

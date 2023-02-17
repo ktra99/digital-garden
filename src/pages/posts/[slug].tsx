@@ -76,8 +76,9 @@ export default function Post({ post }: { post: MDXPost }) {
       </main>
       <footer className="mx-auto mb-4 max-w-3xl pl-4 font-semibold text-white xs:mt-4 xs:mb-16 xs:text-lg">
         © {new Date().getFullYear() + " Kenny Tran."} {""}
-        {locale === "en" && <>All rights reserved.</>}
-        {locale === "sv" && <>Alla rättigheter förbehålles.</>}
+        {locale === "en"
+          ? "All rights reserved."
+          : "Alla rättigheter förbehålles."}
       </footer>
       <Comments key={String(query.slug)} />
     </>

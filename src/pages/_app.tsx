@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GoogleAnalytics />
-      <Layout setActive={setActive}>
+      <Layout>
         <Component {...pageProps} active={active} setActive={setActive} />
       </Layout>
       <Analytics />

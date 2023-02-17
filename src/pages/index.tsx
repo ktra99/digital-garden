@@ -125,8 +125,9 @@ function Footer() {
       <hr />
       <mark className="mt-4 mb-24 block bg-transparent font-semibold text-white xs:mb-32 xs:text-lg sm:mt-6">
         © {new Date().getFullYear() + " Kenny Tran."} {""}
-        {locale === "en" && <>All rights reserved.</>}
-        {locale === "sv" && <>Alla rättigheter förbehålles.</>}
+        {locale === "en"
+          ? "All rights reserved."
+          : "Alla rättigheter förbehålles."}
       </mark>
     </footer>
   );
@@ -164,8 +165,8 @@ export default function Home({
             </div>
             <div className="order-2 mt-0 xl:mt-24">
               <AnimatePresence>
-                {locale === "en" &&
-                  (active.length > 0
+                {locale === "en"
+                  ? active.length > 0
                     ? posts
                         .filter(
                           (post: PostMeta) =>
@@ -179,51 +180,48 @@ export default function Home({
                         .filter((post: PostMeta) => post.slug.includes(".en"))
                         .map((post: PostMeta) => (
                           <Post post={post} key={post.slug} />
-                        )))}
-                {locale === "sv" &&
-                  (active.length > 0
-                    ? posts
-                        .filter(
-                          (post: PostMeta) =>
-                            post.slug.includes(".sv") &&
-                            active.includes(post.tag)
-                        )
-                        .map((post: PostMeta) => (
-                          <Post post={post} key={post.slug} />
                         ))
-                    : posts
-                        .filter((post: PostMeta) => post.slug.includes(".sv"))
-                        .map((post: PostMeta) => (
-                          <Post post={post} key={post.slug} />
-                        )))}
+                  : active.length > 0
+                  ? posts
+                      .filter(
+                        (post: PostMeta) =>
+                          post.slug.includes(".sv") && active.includes(post.tag)
+                      )
+                      .map((post: PostMeta) => (
+                        <Post post={post} key={post.slug} />
+                      ))
+                  : posts
+                      .filter((post: PostMeta) => post.slug.includes(".sv"))
+                      .map((post: PostMeta) => (
+                        <Post post={post} key={post.slug} />
+                      ))}
               </AnimatePresence>
             </div>
             <div className="my-6 sm:mb-12 sm:hidden">
               <div className="flex flex-wrap items-center text-sm xs:text-base sm:space-x-2">
-                {locale === "en" &&
-                  posts
-                    .filter((post: PostMeta) => post.slug.includes(".en"))
-                    .map((post: PostMeta) => (
-                      <Tag
-                        key={post.slug}
-                        post={post}
-                        active={active}
-                        setActive={setActive}
-                        className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
-                      />
-                    ))}
-                {locale === "sv" &&
-                  posts
-                    .filter((post: PostMeta) => post.slug.includes(".sv"))
-                    .map((post: PostMeta) => (
-                      <Tag
-                        key={post.slug}
-                        post={post}
-                        active={active}
-                        setActive={setActive}
-                        className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
-                      />
-                    ))}
+                {locale === "en"
+                  ? posts
+                      .filter((post: PostMeta) => post.slug.includes(".en"))
+                      .map((post: PostMeta) => (
+                        <Tag
+                          key={post.slug}
+                          post={post}
+                          active={active}
+                          setActive={setActive}
+                          className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
+                        />
+                      ))
+                  : posts
+                      .filter((post: PostMeta) => post.slug.includes(".sv"))
+                      .map((post: PostMeta) => (
+                        <Tag
+                          key={post.slug}
+                          post={post}
+                          active={active}
+                          setActive={setActive}
+                          className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
+                        />
+                      ))}
               </div>
             </div>
           </div>
@@ -240,30 +238,29 @@ export default function Home({
             </div>
             <div className="hidden sm:block">
               <div className="mt-12 flex max-w-lg flex-wrap items-center justify-end space-x-6 text-lg xl:mt-24">
-                {locale === "en" &&
-                  posts
-                    .filter((post: PostMeta) => post.slug.includes(".en"))
-                    .map((post: PostMeta) => (
-                      <Tag
-                        key={post.slug}
-                        post={post}
-                        active={active}
-                        setActive={setActive}
-                        className="my-3 rounded-full px-8 pt-3 pb-2 font-bold text-white transition duration-300"
-                      />
-                    ))}
-                {locale === "sv" &&
-                  posts
-                    .filter((post: PostMeta) => post.slug.includes(".sv"))
-                    .map((post: PostMeta) => (
-                      <Tag
-                        key={post.slug}
-                        post={post}
-                        active={active}
-                        setActive={setActive}
-                        className="my-3 rounded-full px-8 pt-3 pb-2 font-bold text-white transition duration-300"
-                      />
-                    ))}
+                {locale === "en"
+                  ? posts
+                      .filter((post: PostMeta) => post.slug.includes(".en"))
+                      .map((post: PostMeta) => (
+                        <Tag
+                          key={post.slug}
+                          post={post}
+                          active={active}
+                          setActive={setActive}
+                          className="my-3 rounded-full px-8 pt-3 pb-2 font-bold text-white transition duration-300"
+                        />
+                      ))
+                  : posts
+                      .filter((post: PostMeta) => post.slug.includes(".sv"))
+                      .map((post: PostMeta) => (
+                        <Tag
+                          key={post.slug}
+                          post={post}
+                          active={active}
+                          setActive={setActive}
+                          className="my-3 rounded-full px-8 pt-3 pb-2 font-bold text-white transition duration-300"
+                        />
+                      ))}
               </div>
             </div>
           </div>
