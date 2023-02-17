@@ -130,10 +130,10 @@ export default function Layout({
       <nav
         className={clsx(
           route.includes("/posts/") && "hidden",
-          "fixed bottom-10 z-20 flex w-full justify-center sm:hidden"
+          "fixed bottom-5 z-20 flex w-full justify-center sm:hidden"
         )}
       >
-        <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-3xl bg-black bg-opacity-75 p-4 text-white backdrop-blur-sm xs:max-w-[20rem]">
+        <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-full bg-black bg-opacity-75 py-4 px-8 text-white backdrop-blur-sm xs:max-w-[20rem]">
           <Link href="/">
             <HomeIcon
               className={clsx(
