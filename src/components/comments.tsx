@@ -10,13 +10,10 @@ export default function Comments() {
     scriptElement.async = true;
     scriptElement.crossOrigin = "anonymous";
     scriptElement.src = "https://utteranc.es/client.js";
-
     scriptElement.setAttribute("issue-term", "pathname");
     scriptElement.setAttribute("repo", "ktra99/digital-garden");
     scriptElement.setAttribute("theme", "github-dark-orange");
-
     ref.current?.appendChild(scriptElement);
   }, [query]);
-
   return <div ref={ref} />;
 }

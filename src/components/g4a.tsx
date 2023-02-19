@@ -39,7 +39,6 @@ export default memo(function GoogleAnalytics() {
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
       ></Script>
-      {/* 👇 gtag function definition. notice that we don't send page views at this point.  */}
       <Script
         id="gtag-init"
         dangerouslySetInnerHTML={{

@@ -119,7 +119,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       rehypePlugins: [rehypeHighlight],
     },
   });
-
   return {
     props: {
       post: {
