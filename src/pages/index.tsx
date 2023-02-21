@@ -14,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
+import { NextSeo } from "next-seo";
 
 function Header() {
   return (
@@ -150,13 +151,30 @@ export default function Home({
       : "Hej, Jag är Kenny. Jag är en utvecklare som vill arbeta med idéer via webben";
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        canonical="https://www.ktra99.dev/"
+        openGraph={{
+          title,
+          description,
+          images: [
+            {
+              url: "https://www.ktra99.dev/og.png",
+              width: 800,
+              height: 600,
+              alt: "Og Image Alt",
+              type: "image/jpeg",
+            },
+          ],
+          siteName: "ktra99.dev",
+        }}
+        twitter={{
+          handle: "@ktra99",
+          site: "@ktra99.dev",
+          cardType: "summary_large_image",
+        }}
+      />
       <main>
         <div className="mx-auto mt-12 flex max-w-7xl flex-col justify-between px-4 sm:items-center xl:flex-row xl:items-start">
           <div className="xl:order-0 order-1 mt-12 flex flex-col sm:mt-6 sm:w-[36rem] xl:mt-0">
