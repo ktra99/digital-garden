@@ -3,18 +3,20 @@ import Dribbble from "@assets/dribbble.png";
 import Github from "@assets/github.png";
 import Linkedin from "@assets/linkedin.png";
 import Twitter from "@assets/twitter.png";
-import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
+import {
+  ArrowLongRightIcon,
+  ArrowTopRightOnSquareIcon,
+} from "@heroicons/react/20/solid";
 import { getAllPosts } from "@src/pages/api";
 import { PostMeta } from "@src/types";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { GetStaticProps } from "next";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
-import { NextSeo } from "next-seo";
 
 function Header() {
   return (
@@ -45,7 +47,6 @@ function Post({ post }: { post: PostMeta }) {
   const { locale } = useRouter();
   return (
     <motion.div
-      className="relative"
       initial={{ opacity: 0, height: 0 }}
       animate={{
         opacity: 1,
@@ -65,7 +66,7 @@ function Post({ post }: { post: PostMeta }) {
       }}
     >
       <div className="py-3 sm:py-6">
-        <div className="rounded-lg border-2 border-[#FAB0EB] bg-[#6973E9] p-4 transition duration-300 xs:p-6 sm:p-8">
+        <div className="relative rounded-lg border-2 border-[#FAB0EB] bg-[#6973E9] p-4 transition duration-300 xs:p-6 sm:p-8">
           <div className="max-w-[30rem] space-y-6">
             <h2 className="text-2xl font-bold text-white">{post.title}</h2>
             <Link
@@ -73,7 +74,9 @@ function Post({ post }: { post: PostMeta }) {
               href={"/" + locale + "/posts/" + post.slug}
               className="block text-xl font-semibold text-[#FAB0EB]"
             >
-              <span className="absolute inset-0 z-20"></span>
+              <span className="group absolute inset-0 z-20 flex items-center justify-center rounded-lg transition-all duration-300 hover:bg-black hover:bg-opacity-60 hover:backdrop-blur-sm">
+                <ArrowTopRightOnSquareIcon className="h-10 w-10 opacity-0 transition-all duration-300 group-hover:opacity-100" />
+              </span>
               Read post <ArrowLongRightIcon className="inline h-6 w-6" />
             </Link>
           </div>
