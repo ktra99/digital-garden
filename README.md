@@ -1,3 +1,5 @@
+![screenshot](./public/og.png)
+
 ## Run Locally
 
 ```bash
