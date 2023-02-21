@@ -37,7 +37,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
   return (
     <>
       <nav className="sticky top-0 z-30 py-4 backdrop-blur-md">
-        <div className="flex w-full items-center justify-between px-4">
+        <div className="flex w-full items-center justify-between px-4 xs:px-6">
           <Link href="/" scroll={false}>
             <Image src={K} alt="brand logotype" className="h-6 w-6" />
           </Link>
