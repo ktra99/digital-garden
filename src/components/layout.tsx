@@ -10,9 +10,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
+import { useState } from "react";
 
 export default function Layout({ children }: { children?: ReactNode }) {
   const { push, query, route, locale } = useRouter();
+  const [x, setX] = useState(locale === "en" ? 0 : 0.05);
+  const [width, setWidth] = useState(locale === "en" ? 4 : 3.5);
   const mobileNavigation = [
     {
       icon: HomeIcon,
@@ -31,24 +34,6 @@ export default function Layout({ children }: { children?: ReactNode }) {
       href: "#",
     },
   ];
-  const desktopNavigation = [
-    {
-      name: locale === "en" ? "HOME" : "HEM",
-      href: "/",
-    },
-    {
-      name: locale === "en" ? "DASHBOARD" : "DASHBOARD",
-      href: "http://dashboard.ktra99.dev/",
-    },
-    {
-      name: locale === "en" ? "PROJECTS" : "PROJEKT",
-      href: "#",
-    },
-    {
-      name: locale === "en" ? "CONTACT" : "KONTAKT",
-      href: "#",
-    },
-  ];
   return (
     <>
       <nav className="sticky top-0 z-30 py-4 backdrop-blur-md">
@@ -56,29 +41,125 @@ export default function Layout({ children }: { children?: ReactNode }) {
           <Link href="/" scroll={false}>
             <Image src={K} alt="brand logotype" className="h-6 w-6" />
           </Link>
-          <div
-            className={clsx(
-              route.includes("/posts/") && "sm:hidden",
-              "hidden space-x-12 text-lg font-semibold text-white sm:block"
-            )}
-          >
-            {desktopNavigation.map((item) => (
+          {locale === "en" ? (
+            <div
+              className={clsx(
+                route.includes("/posts/") && "sm:hidden",
+                "relative hidden space-x-12 text-lg font-semibold text-white sm:block"
+              )}
+              onMouseLeave={() => {
+                setX(0);
+                setWidth(4);
+              }}
+            >
+              <div
+                className="absolute top-[-0.2rem] left-[2.1rem] h-8 rounded-lg bg-[#AF7DE2] transition-all duration-150"
+                style={{ width: width + "rem", translate: x + "rem" }}
+              ></div>
               <Link
-                key={item.name}
-                href={item.href}
-                className={clsx(
-                  route === item.href && "border-b-2 border-[#FAB0EB]",
-                  "py-1"
-                )}
+                href="/"
+                className="relative"
+                onMouseEnter={() => {
+                  setX(0);
+                  setWidth(4);
+                }}
               >
-                {item.name}
+                HOME
               </Link>
-            ))}
-          </div>
+              <Link
+                href="https://dashboard.ktra99.dev/"
+                className="relative"
+                onMouseEnter={() => {
+                  setX(5.15);
+                  setWidth(7);
+                }}
+              >
+                DASHBOARD
+              </Link>
+              <Link
+                href="#"
+                className="relative"
+                onMouseEnter={() => {
+                  setX(13.2);
+                  setWidth(6.5);
+                }}
+              >
+                PROJECTS
+              </Link>
+              <Link
+                href="#"
+                className="relative"
+                onMouseEnter={() => {
+                  setX(20.65);
+                  setWidth(6);
+                }}
+              >
+                CONTACT
+              </Link>
+            </div>
+          ) : (
+            <div
+              className={clsx(
+                route.includes("/posts/") && "sm:hidden",
+                "relative hidden space-x-12 text-lg font-semibold text-white sm:block"
+              )}
+              onMouseLeave={() => {
+                setX(0.05);
+                setWidth(3.5);
+              }}
+            >
+              <div
+                className="absolute top-[-0.2rem] left-[2.1rem] h-8 rounded-lg bg-[#AF7DE2] transition-all duration-150"
+                style={{ width: width + "rem", translate: x + "rem" }}
+              ></div>
+              <Link
+                href="/"
+                className="relative"
+                onMouseEnter={() => {
+                  setX(0.05);
+                  setWidth(3.5);
+                }}
+              >
+                HEM
+              </Link>
+              <Link
+                href="https://dashboard.ktra99.dev/"
+                className="relative"
+                onMouseEnter={() => {
+                  setX(4.65);
+                  setWidth(7);
+                }}
+              >
+                DASHBOARD
+              </Link>
+              <Link
+                href="#"
+                className="relative"
+                onMouseEnter={() => {
+                  setX(12.75);
+                  setWidth(5.75);
+                }}
+              >
+                PROJEKT
+              </Link>
+              <Link
+                href="#"
+                className="relative"
+                onMouseEnter={() => {
+                  setX(19.5);
+                  setWidth(6);
+                }}
+              >
+                KONTAKT
+              </Link>
+            </div>
+          )}
           <div className="text-lg font-bold text-[#FAB0EB]">
             <button
               type="button"
-              onClick={() =>
+              onClick={() => {
+                setX(0);
+                setWidth(4);
                 push(
                   query.slug
                     ? "/posts/" + String(query.slug).split(".sv")[0] + ".en"
@@ -90,8 +171,8 @@ export default function Layout({ children }: { children?: ReactNode }) {
                     locale: "en",
                     scroll: false,
                   }
-                )
-              }
+                );
+              }}
               className={clsx(
                 locale === "en" ? "text-[#FAB0EB]" : "text-white"
               )}
@@ -102,7 +183,9 @@ export default function Layout({ children }: { children?: ReactNode }) {
             |{" "}
             <button
               type="button"
-              onClick={() =>
+              onClick={() => {
+                setX(0.05);
+                setWidth(3.5);
                 push(
                   query.slug
                     ? "/posts/" + String(query.slug).split(".en")[0] + ".sv"
@@ -114,8 +197,8 @@ export default function Layout({ children }: { children?: ReactNode }) {
                     locale: "sv",
                     scroll: false,
                   }
-                )
-              }
+                );
+              }}
               className={clsx(
                 locale === "sv" ? "text-[#FAB0EB]" : "text-white"
               )}
