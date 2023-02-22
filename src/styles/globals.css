@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  word-break: break-word;
+}
+
 #mdx a{
   color: #FAB0EB;
   font-weight: 500;
