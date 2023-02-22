@@ -245,7 +245,7 @@ function Mobile() {
   );
 }
 
-export default function Layout({ children }: { children?: ReactNode }) {
+export default function Nav({ children }: { children?: ReactNode }) {
   return (
     <>
       <Desktop />
