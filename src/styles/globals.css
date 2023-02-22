@@ -48,6 +48,10 @@ pre code{
   border-radius: 0.75rem !important;
 }
 
+html{
+  scroll-behavior: smooth !important;
+}
+
 body{
   background-color: #5A64DE;
   font-family: 'Lekton', sans-serif;

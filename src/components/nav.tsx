@@ -20,11 +20,11 @@ const mobileNavigation = [
   },
   {
     icon: RectangleStackIcon,
-    href: "#",
+    href: "#projects",
   },
   {
     icon: EnvelopeIcon,
-    href: "#",
+    href: "mailto:kennytran.dev@outlook.com",
   },
 ];
 

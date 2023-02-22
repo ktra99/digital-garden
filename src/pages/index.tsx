@@ -13,10 +13,35 @@ import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
+import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
 
 const tagAtom = atomWithStorage<string[]>("tags", []);
 
+const projects = [
+  {
+    name: "Digital garden",
+    href: "https://github.com/ktra99/digital-garden",
+  },
+  {
+    name: "To do app",
+    href: "https://github.com/ktra99/todo",
+  },
+  {
+    name: "Ecommerce template",
+    href: "https://github.com/ktra99/ecommerce",
+  },
+  {
+    name: "Geoguessr inspired game",
+    href: "https://github.com/ktra99/geo",
+  },
+  {
+    name: "Bank ID mockup",
+    href: "https://github.com/ktra99/bankid",
+  },
+];
+
 function Modal() {
+  const { locale } = useRouter();
   return (
     <motion.div
       layout
@@ -37,13 +62,18 @@ function Modal() {
       }}
     >
       <div className="relative h-full min-h-[10rem] rounded-lg border-2 border-[#FAB0EB] bg-[#6973E9] p-6 transition duration-300">
-        <div className="max-w-[30rem] space-y-6">
-          <button
-            type="button"
-            className="absolute inset-0 z-20 flex items-center justify-center rounded-lg"
-          >
-            <ArrowsPointingOutIcon className="h-6 w-6 text-white xs:h-10 xs:w-10" />
-          </button>
+        <div className="flex h-full max-w-[30rem] items-center justify-center space-y-6">
+          <h2 className="text-xs font-bold text-white xs:text-base sm:text-xl">
+            {locale === "en" ? "View more" : "Visa mer"}
+          </h2>
+          <div className="block text-xl font-semibold">
+            <button
+              type="button"
+              className="group absolute inset-0 z-20 flex items-center justify-center rounded-lg transition-all duration-300 hover:bg-black hover:bg-opacity-60 hover:backdrop-blur-sm"
+            >
+              <ArrowsPointingOutIcon className="h-6 w-6 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 xs:h-10 xs:w-10" />
+            </button>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -100,7 +130,7 @@ function DesktopNav({
             DASHBOARD
           </Link>
           <Link
-            href="#"
+            href="#projects"
             className="relative"
             onMouseEnter={() => {
               setX(13.2);
@@ -110,7 +140,7 @@ function DesktopNav({
             PROJECTS
           </Link>
           <Link
-            href="#"
+            href="mailto:kennytran.dev@outlook.com"
             className="relative"
             onMouseEnter={() => {
               setX(20.65);
@@ -156,7 +186,7 @@ function DesktopNav({
             DASHBOARD
           </Link>
           <Link
-            href="#"
+            href="#projects"
             className="relative"
             onMouseEnter={() => {
               setX(12.75);
@@ -166,7 +196,7 @@ function DesktopNav({
             PROJEKT
           </Link>
           <Link
-            href="#"
+            href="mailto:kennytran.dev@outlook.com"
             className="relative"
             onMouseEnter={() => {
               setX(19.5);
@@ -235,10 +265,10 @@ function Post({ post }: { post: PostMeta }) {
           <Link
             locale="en"
             href={"/" + locale + "/posts/" + post.slug}
-            className="block text-xl font-semibold text-[#FAB0EB]"
+            className="block text-xl font-semibold"
           >
             <span className="group absolute inset-0 z-20 flex items-center justify-center rounded-lg transition-all duration-300 hover:bg-black hover:bg-opacity-60 hover:backdrop-blur-sm">
-              <ArrowTopRightOnSquareIcon className="h-10 w-10 opacity-0 transition-all duration-300 group-hover:opacity-100" />
+              <ArrowTopRightOnSquareIcon className="h-10 w-10 text-white opacity-0 transition-all duration-300 group-hover:opacity-100" />
             </span>
           </Link>
         </div>
@@ -404,7 +434,7 @@ export default function Home({
                         <Tag
                           key={post.slug}
                           post={post}
-                          className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
+                          className="my-1 mr-2 rounded-md border-2 border-transparent px-4 pt-2 pb-1 font-bold text-white transition-all duration-300 hover:border-white sm:mx-0 sm:my-3"
                         />
                       ))
                   : posts
@@ -413,7 +443,7 @@ export default function Home({
                         <Tag
                           key={post.slug}
                           post={post}
-                          className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
+                          className="my-1 mr-2 rounded-md border-2 border-transparent px-4 pt-2 pb-1 font-bold text-white transition-all duration-300 hover:border-white sm:mx-0 sm:my-3"
                         />
                       ))}
               </div>
@@ -438,7 +468,7 @@ export default function Home({
                         <Tag
                           key={post.slug}
                           post={post}
-                          className="my-3 rounded-full px-8 pt-3 pb-2 font-bold text-white transition duration-300"
+                          className="my-3 rounded-full border-2 border-transparent px-6 pt-3 pb-2 font-bold text-white transition-all duration-300 hover:border-white"
                         />
                       ))
                   : posts
@@ -447,10 +477,104 @@ export default function Home({
                         <Tag
                           key={post.slug}
                           post={post}
-                          className="my-3 rounded-full px-8 pt-3 pb-2 font-bold text-white transition duration-300"
+                          className="my-3 rounded-full border-2 border-transparent px-6 pt-3 pb-2 font-bold text-white transition-all duration-300 hover:border-white"
                         />
                       ))}
               </div>
+            </div>
+          </div>
+        </div>
+        <div id="projects" className="mx-auto my-24 w-full max-w-7xl px-4">
+          <div className="divide-y divide-white">
+            <h2 className="text-4xl font-bold leading-10 tracking-tight text-white">
+              {locale === "en" ? "Projects" : "Projekt"}
+            </h2>
+            <dl className="mt-10 space-y-6 divide-y divide-white">
+              {projects.map((project) => (
+                <dt key={project.href} className="pt-6">
+                  <div className="group relative flex w-full items-start justify-between text-left text-white">
+                    <span className="font-semibold leading-7 group-hover:text-[#FAB0EB] sm:text-xl">
+                      {project.name}
+                    </span>
+                    <a
+                      href={project.href}
+                      className="absolute inset-0 z-20 flex h-7 items-center group-hover:text-[#FAB0EB]"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <ArrowTopRightOnSquareIcon className="ml-auto h-6 w-6" />
+                    </a>
+                  </div>
+                </dt>
+              ))}
+            </dl>
+          </div>
+        </div>
+        <div className="relative isolate my-36 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 lg:max-w-none lg:grid-cols-2">
+              <div className="max-w-xl lg:max-w-lg">
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                  {locale === "en"
+                    ? "Subscribe to my newsletter."
+                    : "Prenumerera på mitt nyhetsbrev."}
+                </h2>
+                <p className="mt-4 text-lg leading-8 text-gray-300">
+                  Nostrud amet eu ullamco nisi aute in ad minim nostrud
+                  adipisicing velit quis. Duis tempor incididunt dolore.
+                </p>
+                <div className="mt-6 flex max-w-md gap-x-4">
+                  <label htmlFor="email-address" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="email-address"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    className="min-w-0 flex-auto rounded-md border-2 border-transparent bg-white/5 px-3.5 py-2 text-white placeholder-white shadow-sm outline-none ring-1 ring-inset ring-white/10 transition-all duration-300 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
+                    placeholder="Enter your email"
+                  />
+                  <button
+                    type="submit"
+                    className="flex-none rounded-md border-2 border-transparent bg-[#3F49C2] py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:border-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3F49C2]"
+                    disabled
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+              <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
+                <div className="flex flex-col items-start">
+                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                    <CalendarDaysIcon
+                      className="h-6 w-6 text-white"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <dt className="mt-4 font-semibold text-white">
+                    Weekly articles
+                  </dt>
+                  <dd className="mt-2 leading-7 text-gray-300">
+                    Non laboris consequat cupidatat laborum magna. Eiusmod non
+                    irure cupidatat duis commodo amet.
+                  </dd>
+                </div>
+                <div className="flex flex-col items-start">
+                  <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                    <HandRaisedIcon
+                      className="h-6 w-6 text-white"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <dt className="mt-4 font-semibold text-white">No spam</dt>
+                  <dd className="mt-2 leading-7 text-gray-300">
+                    Officia excepteur ullamco ut sint duis proident non
+                    adipisicing. Voluptate incididunt anim.
+                  </dd>
+                </div>
+              </dl>
             </div>
           </div>
         </div>

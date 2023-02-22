@@ -8,9 +8,11 @@ pnpm dev
 ```
 
 ## About
+
 This is my digital garden built on Next.js and MDX. Feel free to contribute and use it for inspiration.
 
 ## Features
+
 - Markdown support
 - Translation support
 - SSG with getStaticProps
@@ -20,6 +22,7 @@ This is my digital garden built on Next.js and MDX. Feel free to contribute and 
 - Comment section (utteranc.es)
 
 ## Stack
+
 - Next.js
 - Typescript
 - Tailwind CSS
@@ -29,10 +32,11 @@ This is my digital garden built on Next.js and MDX. Feel free to contribute and 
 - Rehype-highlight
 
 ## To-do
+
 - [x] Navigation
 - [x] Dashboard
-- [ ] Projects page 
-- [ ] Contact form
+- [x] Projects section
+- [x] Contact link
 
 ## License
 
