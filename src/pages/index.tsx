@@ -1,8 +1,3 @@
-import Avatar from "@assets/avatar.png";
-import Dribbble from "@assets/dribbble.png";
-import Github from "@assets/github.png";
-import Linkedin from "@assets/linkedin.png";
-import Twitter from "@assets/twitter.png";
 import {
   ArrowLongRightIcon,
   ArrowTopRightOnSquareIcon,
@@ -11,12 +6,14 @@ import { getAllPosts } from "@src/pages/api";
 import { PostMeta } from "@src/types";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
+import { useAtom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 import { GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Dispatch, SetStateAction } from "react";
+
+const tagAtom = atomWithStorage<string[]>("tags", []);
 
 function Header() {
   return (
@@ -27,16 +24,16 @@ function Header() {
       <div className="my-3 mx-auto flex w-48 items-center space-x-4 xs:w-72 xs:space-x-6 sm:mx-0 sm:w-[30rem]">
         <hr className="w-12 border border-[#FAB0EB] xs:w-24 sm:w-64" />
         <a href="https://twitter.com/ktra99">
-          <Image className="w-8" src={Twitter} alt="twitter" />
+          <img className="w-8" src="/twitter.png" alt="twitter" />
         </a>
         <a href="https://dribbble.com/ktra99">
-          <Image className="w-8" src={Dribbble} alt="dribbble" />
+          <img className="w-8" src="/dribbble.png" alt="dribbble" />
         </a>
         <a href="https://github.com/ktra99">
-          <Image className="w-8" src={Github} alt="github" />
+          <img className="w-8" src="/github.png" alt="github" />
         </a>
         <a href="https://www.linkedin.com/in/ktra99/">
-          <Image className="w-8" src={Linkedin} alt="linkedin" />
+          <img className="w-8" src="/linkedin.png" alt="linkedin" />
         </a>
       </div>
     </>
@@ -86,25 +83,14 @@ function Post({ post }: { post: PostMeta }) {
   );
 }
 
-function Tag({
-  post,
-  active,
-  className,
-  setActive,
-}: {
-  post: PostMeta;
-  active: string[];
-  className: string;
-  setActive: Dispatch<SetStateAction<string[]>>;
-}) {
+function Tag({ post, className }: { post: PostMeta; className: string }) {
+  const [tags, setTags] = useAtom(tagAtom);
   return (
     <>
-      {active.includes(post.tag) ? (
+      {tags.includes(post.tag) ? (
         <button
           type="button"
-          onClick={() =>
-            setActive([...active].filter((tag) => tag !== post.tag))
-          }
+          onClick={() => setTags([...tags].filter((tag) => tag !== post.tag))}
           className={clsx("bg-[#AF7DE2]", className)}
         >
           {post.tag}
@@ -112,7 +98,7 @@ function Tag({
       ) : (
         <button
           type="button"
-          onClick={() => setActive([...active, post.tag])}
+          onClick={() => setTags([...tags, post.tag])}
           className={clsx("bg-[#3F49C2]", className)}
         >
           {post.tag}
@@ -137,16 +123,9 @@ function Footer() {
   );
 }
 
-export default function Home({
-  active,
-  posts,
-  setActive,
-}: {
-  active: string[];
-  posts: PostMeta[];
-  setActive: Dispatch<SetStateAction<string[]>>;
-}) {
+export default function Home({ posts }: { posts: PostMeta[] }) {
   const { locale } = useRouter();
+  const [tags, setTags] = useAtom(tagAtom);
   const title = "Kenny Tran";
   const description =
     locale === "en"
@@ -177,6 +156,12 @@ export default function Home({
           site: "@ktra99.dev",
           cardType: "summary_large_image",
         }}
+        additionalLinkTags={[
+          {
+            rel: "icon",
+            href: "https://www.ktra99.dev/favicon.ico",
+          },
+        ]}
       />
       <main>
         <div className="mx-auto mt-12 flex max-w-7xl flex-col justify-between px-4 sm:items-center xl:flex-row xl:items-start">
@@ -187,12 +172,11 @@ export default function Home({
             <div className="order-2 mt-0 xl:mt-24">
               <AnimatePresence>
                 {locale === "en"
-                  ? active.length > 0
+                  ? tags.length > 0
                     ? posts
                         .filter(
                           (post: PostMeta) =>
-                            post.slug.includes(".en") &&
-                            active.includes(post.tag)
+                            post.slug.includes(".en") && tags.includes(post.tag)
                         )
                         .map((post: PostMeta) => (
                           <Post post={post} key={post.slug} />
@@ -202,11 +186,11 @@ export default function Home({
                         .map((post: PostMeta) => (
                           <Post post={post} key={post.slug} />
                         ))
-                  : active.length > 0
+                  : tags.length > 0
                   ? posts
                       .filter(
                         (post: PostMeta) =>
-                          post.slug.includes(".sv") && active.includes(post.tag)
+                          post.slug.includes(".sv") && tags.includes(post.tag)
                       )
                       .map((post: PostMeta) => (
                         <Post post={post} key={post.slug} />
@@ -227,8 +211,6 @@ export default function Home({
                         <Tag
                           key={post.slug}
                           post={post}
-                          active={active}
-                          setActive={setActive}
                           className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
                         />
                       ))
@@ -238,8 +220,6 @@ export default function Home({
                         <Tag
                           key={post.slug}
                           post={post}
-                          active={active}
-                          setActive={setActive}
                           className="my-1 mr-2 rounded-md px-4 pt-2 pb-1 font-bold text-white transition duration-300 sm:mx-0 sm:my-3"
                         />
                       ))}
@@ -247,12 +227,10 @@ export default function Home({
             </div>
           </div>
           <div className="order-0 flex flex-col xl:order-1">
-            <Image
+            <img
               className="mx-auto w-full max-w-[16rem] sm:max-w-[24rem] xl:ml-auto"
-              src={Avatar}
+              src="/avatar.png"
               alt="avatar"
-              placeholder="blur"
-              priority
             />
             <div className="hidden sm:mt-12 sm:block xl:hidden">
               <Header />
@@ -266,8 +244,6 @@ export default function Home({
                         <Tag
                           key={post.slug}
                           post={post}
-                          active={active}
-                          setActive={setActive}
                           className="my-3 rounded-full px-8 pt-3 pb-2 font-bold text-white transition duration-300"
                         />
                       ))
@@ -277,8 +253,6 @@ export default function Home({
                         <Tag
                           key={post.slug}
                           post={post}
-                          active={active}
-                          setActive={setActive}
                           className="my-3 rounded-full px-8 pt-3 pb-2 font-bold text-white transition duration-300"
                         />
                       ))}

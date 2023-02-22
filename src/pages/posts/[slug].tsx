@@ -1,4 +1,3 @@
-import Avatar from "@assets/avatar.png";
 import Checkbox from "@src/components/checkbox";
 import Code from "@src/components/code";
 import Comments from "@src/components/comments";
@@ -8,7 +7,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import rehypeHighlight from "rehype-highlight";
@@ -53,12 +51,7 @@ export default function Post({ post }: { post: MDXPost }) {
             {post.meta.title}
           </h1>
           <div className="flex items-center space-x-6">
-            <Image
-              className="w-16"
-              src={Avatar}
-              alt="avatar"
-              placeholder="blur"
-            />
+            <img className="w-16" src="../../avatar.png" alt="avatar" />
             <div className="text-white">
               <h4 className="text-xl font-semibold">KENNY TRAN</h4>
               <p className="-mt-1 text-sm font-medium">{post.meta.time}</p>
