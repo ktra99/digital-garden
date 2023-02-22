@@ -5,10 +5,9 @@ import {
   RectangleStackIcon,
 } from "@heroicons/react/20/solid";
 import clsx from "clsx";
-import { SetStateAction } from "jotai";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Dispatch, ReactNode, useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 
 const mobileNavigation = [
   {
