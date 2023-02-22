@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import rehypeHighlight from "rehype-highlight";
 import remarkGFM from "remark-gfm";
+import { NextSeo } from "next-seo";
 
 export default function Post({ post }: { post: MDXPost }) {
   const { asPath, query, locale } = useRouter();
@@ -38,6 +39,36 @@ export default function Post({ post }: { post: MDXPost }) {
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="canonical" href={canonical} />
       </Head>
+      <NextSeo
+        title={post.meta.title}
+        description={post.meta.excerpt}
+        canonical={canonical}
+        openGraph={{
+          title: post.meta.title,
+          description: post.meta.excerpt,
+          images: [
+            {
+              url: "https://www.ktra99.dev/og.png",
+              width: 800,
+              height: 600,
+              alt: "Og Image Alt",
+              type: "image/jpeg",
+            },
+          ],
+          siteName: "ktra99.dev",
+        }}
+        twitter={{
+          handle: "@ktra99",
+          site: "@ktra99.dev",
+          cardType: "summary_large_image",
+        }}
+        additionalLinkTags={[
+          {
+            rel: "icon",
+            href: "https://www.ktra99.dev/favicon.ico",
+          },
+        ]}
+      />
       <span
         className="fixed block h-1 bg-[#FAB0EB]"
         style={{ width: scrollPosition + "%" }}
