@@ -14,14 +14,18 @@ import {
   useInView,
   Variants,
 } from "framer-motion";
+import gsap from "gsap";
 import { atom, useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
+import MouseFollower from "mouse-follower";
 import { GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+MouseFollower.registerGSAP(gsap);
 
 const transition: Transition = {
   duration: 0.25,
@@ -140,7 +144,7 @@ function ViewMore() {
           </h2>
           <button
             type="button"
-            className="group absolute inset-0 z-20 flex items-center justify-center rounded-lg border-2 border-transparent text-xl font-semibold transition-all duration-300 hover:border-white"
+            className="absolute inset-0 z-20 flex items-center justify-center rounded-lg border-2 border-transparent text-xl font-semibold transition-all duration-300 hover:border-white"
           ></button>
         </div>
       </div>
@@ -215,10 +219,8 @@ function Post({ post }: { post: PostMeta }) {
           <Link
             locale={locale}
             href={"/" + locale + "/posts/" + post.slug}
-            className="block text-xl font-semibold"
-          >
-            <span className="group absolute inset-0 z-20 flex items-center justify-center rounded-lg border-2 border-transparent text-xl font-semibold transition-all duration-300 hover:border-white"></span>
-          </Link>
+            className="absolute inset-0 z-20 flex items-center justify-center rounded-lg border-2 border-transparent text-xl font-semibold transition-all duration-300 hover:border-white"
+          ></Link>
         </div>
       </div>
     </motion.div>
@@ -273,7 +275,7 @@ function Stats({ posts }: { posts: PostMeta[] }) {
   );
 }
 
-function Projects() {
+function Projects({ cursor }: { cursor: MouseFollower | null }) {
   const translate = useLocale();
   return (
     <div className="relative mx-auto my-24 w-full px-4">
@@ -283,7 +285,12 @@ function Projects() {
         </h2>
         <dl className="mt-10 space-y-6 divide-y divide-white">
           {projects.map((project) => (
-            <dt key={project.href} className="pt-6">
+            <dt
+              key={project.href}
+              className="pt-6"
+              onMouseEnter={() => cursor?.setImg(project.image)}
+              onMouseLeave={() => cursor?.removeImg()}
+            >
               <div className="relative flex w-full items-start justify-between text-left text-white">
                 <span className="font-semibold leading-7 sm:text-xl">
                   {project.name}
@@ -391,7 +398,6 @@ function Footer() {
 }
 
 function MobileNav() {
-  const { route } = useRouter();
   return (
     <nav className="fixed bottom-5 z-20 flex w-full justify-center md:hidden">
       <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-full bg-white/25 bg-opacity-90 py-4 px-8 backdrop-blur-md xs:max-w-[20rem]">
@@ -411,10 +417,18 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
   const [tags] = useAtom(tagAtom);
   const [_x, setX] = useAtom(xAtom);
   const [width, setWidth] = useAtom(widthAtom);
+  const [cursor, setCursor] = useState<MouseFollower | null>(null);
   const title = "Kenny Tran";
   const description = translate(
     "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations."
   );
+  useEffect(() => {
+    if (document.querySelectorAll(".mf-cursor").length) return;
+    setCursor(new MouseFollower());
+    return () => {
+      document.querySelector(".mf-cursor")?.remove();
+    };
+  }, []);
   useEffect(() => {
     if (width === 0) {
       setX(locale === "en" ? 0 : 0.05);
@@ -570,7 +584,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
         </div>
         <div className="mx-auto sm:max-w-[35rem] xl:max-w-7xl">
           <Stats posts={posts} />
-          <Projects />
+          <Projects cursor={cursor} />
           <Newsletter />
         </div>
       </main>

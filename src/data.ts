@@ -23,23 +23,8 @@ export const nav = {
 export const projects = [
   {
     name: "Digital garden",
+    image: "/og.png",
     href: "https://github.com/ktra99/digital-garden",
-  },
-  {
-    name: "To do app",
-    href: "https://github.com/ktra99/todo",
-  },
-  {
-    name: "Ecommerce template",
-    href: "https://github.com/ktra99/ecommerce",
-  },
-  {
-    name: "Geoguessr inspired game",
-    href: "https://github.com/ktra99/geo",
-  },
-  {
-    name: "Bank ID mockup",
-    href: "https://github.com/ktra99/bankid",
   },
 ];
 
