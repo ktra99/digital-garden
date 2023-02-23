@@ -1,7 +1,8 @@
-import K from "@public/k.png";
+import { ArrowLongLeftIcon, MoonIcon } from "@heroicons/react/20/solid";
 import Checkbox from "@src/components/checkbox";
 import Code from "@src/components/code";
 import Comments from "@src/components/comments";
+import useLocale from "@src/hooks/useLocale";
 import { getPostFromSlug, getSlugs } from "@src/pages/api";
 import { MDXPost } from "@src/types";
 import clsx from "clsx";
@@ -9,14 +10,11 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo } from "next-seo";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import rehypeHighlight from "rehype-highlight";
 import remarkGFM from "remark-gfm";
-import useLocale from "@src/hooks/useLocale";
-import Avatar from "@public/avatar.png";
 
 function Language({ url, language }: { url: string; language: string }) {
   const { push, locale } = useRouter();
@@ -30,7 +28,7 @@ function Language({ url, language }: { url: string; language: string }) {
         })
       }
       className={clsx(
-        locale === language ? "text-[#FAB0EB]" : "text-white",
+        locale === language ? "text-white/80" : "text-white/40",
         "uppercase"
       )}
       disabled={locale === language}
@@ -50,7 +48,7 @@ function Locale() {
     : "/";
   return (
     <>
-      <div className="text-lg font-bold text-[#FAB0EB]">
+      <div className="text-lg font-bold text-white/40">
         <Language url={en} language="en" /> |{" "}
         <Language url={sv} language="sv" />
       </div>
@@ -60,11 +58,11 @@ function Locale() {
 
 function Navbar() {
   return (
-    <nav className="sticky top-0 z-30 bg-[#5A64DE] bg-opacity-75 py-3 backdrop-blur-sm">
+    <nav className="sticky top-0 z-30 bg-zinc-900 bg-opacity-75 py-3 backdrop-blur-sm">
       <div className="flex w-full items-center justify-between px-4">
-        <Link href="/" scroll={false} className="relative h-6 w-6">
-          <Image src={K} alt="brand logotype" placeholder="blur" fill />
-        </Link>
+        <button type="button">
+          <MoonIcon className="h-6 w-6 text-white/80" />
+        </button>
         <Locale />
       </div>
     </nav>
@@ -74,7 +72,7 @@ function Navbar() {
 function Footer() {
   const translate = useLocale();
   return (
-    <footer className="mx-auto mb-4 max-w-3xl pl-4 font-semibold text-white xs:mt-4 xs:mb-16 xs:text-lg">
+    <footer className="mx-auto mb-4 max-w-3xl font-semibold text-white xs:mt-4 xs:mb-16 xs:text-lg">
       © {new Date().getFullYear() + " Kenny Tran."} {""}
       {translate("All rights reserved.")}
     </footer>
@@ -131,30 +129,21 @@ export default function Post({ post }: { post: MDXPost }) {
       />
       <Navbar />
       <span
-        className="fixed block h-1 bg-[#FAB0EB]"
+        className="fixed block h-1 bg-white/80"
         style={{ width: scrollPosition + "%" }}
       ></span>
       <main className="p-4">
-        <div className="mx-auto flex max-w-3xl flex-col items-center justify-center space-y-12">
-          <span className="mt-12 rounded-full bg-[#3F49C2] px-8 pt-3 pb-2 font-bold text-white sm:mt-0">
-            {post.meta.tag}
-          </span>
-          <h1 className="text-center text-[1.75rem] font-bold leading-[2.5rem] text-white sm:text-5xl sm:leading-[4rem]">
+        <div className="mx-auto flex max-w-3xl flex-col justify-center">
+          <Link
+            href="/"
+            className="group mt-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition duration-300 hover:border-white"
+          >
+            <ArrowLongLeftIcon className="h-6 w-6 text-white/40 transition duration-300 group-hover:text-white" />
+          </Link>
+          <h1 className="my-6 text-[1.75rem] font-bold leading-[2.5rem] text-white xs:my-12 xs:text-5xl xs:leading-[4rem]">
             {post.meta.title}
           </h1>
-          <div className="flex items-center space-x-6">
-            <div className="relative h-16 w-16">
-              <Image src={Avatar} alt="avatar" placeholder="blur" fill />
-            </div>
-            <div className="text-white">
-              <h4 className="text-xl font-semibold">KENNY TRAN</h4>
-              <p className="-mt-1 text-sm font-medium">{post.meta.time}</p>
-            </div>
-          </div>
-          <div
-            id="mdx"
-            className="w-full space-y-6 font-sans text-white xs:space-y-12 xs:text-xl xs:leading-[2.75rem]"
-          >
+          <div id="mdx" className="w-full space-y-6 font-sans text-white">
             <p>{post.meta.excerpt}</p>
             <MDXRemote {...post.source} components={{ Code, Checkbox }} />
             <hr />

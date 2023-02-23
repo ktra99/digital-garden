@@ -12,7 +12,7 @@ export default function Comments() {
     scriptElement.src = "https://utteranc.es/client.js";
     scriptElement.setAttribute("issue-term", "pathname");
     scriptElement.setAttribute("repo", "ktra99/digital-garden");
-    scriptElement.setAttribute("theme", "github-dark-orange");
+    scriptElement.setAttribute("theme", "github-dark");
     ref.current?.appendChild(scriptElement);
   }, [query]);
   return <div ref={ref} />;

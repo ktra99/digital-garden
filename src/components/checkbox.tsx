@@ -6,7 +6,7 @@ export default function Checkbox({
   excerpt: string;
 }) {
   return (
-    <div className="relative my-6 flex items-start">
+    <div className="relative flex items-start py-6">
       <div className="flex h-5 items-center">
         <input
           id="checkbox"

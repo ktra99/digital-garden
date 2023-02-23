@@ -9,7 +9,6 @@
 }
 
 #mdx a{
-  color: #FAB0EB;
   font-weight: 500;
   text-decoration: underline;
 }
@@ -24,7 +23,12 @@
   font-size: 1.75rem;
 }
 
+#mdx li{
+  padding-left: 1rem;
+}
+
 #mdx img{
+  margin: 1rem 0;
   border-radius: 0.5rem;
 }
 
@@ -33,19 +37,22 @@
   list-style-type: decimal;
 }
 
+#mdx p, #mdx ol, #mdx ul, #mdx label{
+  font-size: 1.25rem;
+  line-height: 2.5rem;
+}
+
 #mdx table *{
   padding: 1rem;
   text-align: left;
   border: 1px solid white;
 }
 
-li{
-  padding-left: 1rem;
-}
-
 pre code{
   padding: 2rem !important;
+  border: 2px solid #3f3f46;
   border-radius: 0.75rem !important;
+  background-color: #27272a !important;
 }
 
 html{
@@ -53,6 +60,23 @@ html{
 }
 
 body{
-  background-color: #5A64DE;
   font-family: 'Lekton', sans-serif;
+}
+
+@media screen and (max-width: 300px) {
+  #mdx h1{
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  #mdx h2{
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  #mdx p{
+    font-size: 1rem;
+    line-height: 2.25rem;
+  }
+  pre code{
+    padding: 1rem !important;
+  }
 }

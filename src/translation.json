@@ -1,20 +1,22 @@
 {
   "sv": {
-    "Home": "Hem",
-    "Contact": "Contact",
-    "Projects": "Projekt",
-    "No spam": "Ingen spam",
-    "View more": "Visa mer",
-    "Dashboard": "Dashboard",
-    "Subscribe": "Prenumerera",
-    "Email address": "E-postadress",
-    "Weekly articles": "Veckoartiklar",
-    "Enter your email": "Ange din e-postadress",
     "All rights reserved.": "Alla rättigheter förbehålles.",
-    "Subscribe to my newsletter.": "Prenumerera på mitt nyhetsbrev.",
-    "Stay informed and inspired every week!": "Håll dig informerad och inspirerad varje vecka!",
+    "Contact": "Kontakt",
+    "Stats": "Statistik",
     "Don't miss out on exclusive content and updates!": "Missa inte exklusivt innehåll och uppdateringar!",
+    "Email address": "E-postadress",
+    "Enter your email": "Ange din e-postadress",
+    "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations.": "Hej, jag är Kenny. Jag är en utvecklare baserad i Sverige. Min styrka ligger i att utveckla användarvänliga applikationer, med komplexa data- och API-integrationer.",
+    "Home": "Hem",
     "I'll never share your information or spam your inbox.": "Jag kommer aldrig att dela din information eller spamma din inkorg.",
-    "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations.": "Hej, jag är Kenny. Jag är en utvecklare baserad i Sverige. Min styrka ligger i att utveckla användarvänliga applikationer, med komplexa data- och API-integrationer."
+    "No spam": "Ingen spam",
+    "Posts": "Inlägg",
+    "Projects": "Projekt",
+    "Stay informed and inspired every week!": "Håll dig informerad och inspirerad varje vecka!",
+    "Subscribe": "Prenumerera",
+    "Subscribers": "Prenumeranter",
+    "Subscribe to my newsletter.": "Prenumerera på mitt nyhetsbrev.",
+    "View more": "Visa mer",
+    "Weekly articles": "Veckoartiklar"
   }
 }

@@ -1,16 +1,19 @@
-import {
-  ArrowsPointingOutIcon,
-  ArrowTopRightOnSquareIcon,
-} from "@heroicons/react/20/solid";
+import { ArrowTopRightOnSquareIcon, MoonIcon } from "@heroicons/react/20/solid";
 import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
 import Avatar from "@public/avatar.png";
-import K from "@public/k.png";
 import { nav, navigation, projects } from "@src/data";
 import useLocale from "@src/hooks/useLocale";
 import { getAllPosts } from "@src/pages/api";
 import { PostMeta } from "@src/types";
 import clsx from "clsx";
-import { AnimatePresence, motion, Transition, Variants } from "framer-motion";
+import {
+  animate,
+  AnimatePresence,
+  motion,
+  Transition,
+  useInView,
+  Variants,
+} from "framer-motion";
 import { atom, useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { GetStaticProps } from "next";
@@ -18,7 +21,7 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const transition: Transition = {
   duration: 0.25,
@@ -43,6 +46,28 @@ const xAtom = atom(0);
 const widthAtom = atom(0);
 const tagAtom = atomWithStorage<string[]>("tags", []);
 
+function Counter({ from, to }: { from: number; to: number }) {
+  const nodeRef = useRef<HTMLParagraphElement | null>(null);
+  const isInView = useInView(nodeRef);
+
+  useEffect(() => {
+    if (isInView) {
+      const node = nodeRef.current as { textContent: string };
+
+      const controls = animate(from, to, {
+        duration: 1,
+        onUpdate(value) {
+          node.textContent = value.toFixed(2);
+        },
+      });
+
+      return () => controls.stop();
+    }
+  }, [from, to, isInView]);
+
+  return <p ref={nodeRef} />;
+}
+
 function Language({ url, language }: { url: string; language: string }) {
   const [_x, setX] = useAtom(xAtom);
   const { push, locale } = useRouter();
@@ -63,7 +88,7 @@ function Language({ url, language }: { url: string; language: string }) {
         });
       }}
       className={clsx(
-        locale === language ? "text-[#FAB0EB]" : "text-white",
+        locale === language ? "text-white/80" : "text-white/40",
         "uppercase"
       )}
       disabled={locale === language}
@@ -83,7 +108,7 @@ function Locale() {
     : "/";
   return (
     <>
-      <div className="text-lg font-bold text-[#FAB0EB]">
+      <div className="text-lg font-bold text-white/40">
         <Language url={en} language="en" /> |{" "}
         <Language url={sv} language="sv" />
       </div>
@@ -93,28 +118,14 @@ function Locale() {
 
 function Navbar() {
   return (
-    <nav className="sticky top-0 z-30 bg-[#5A64DE] bg-opacity-75 py-3 backdrop-blur-sm">
+    <nav className="sticky top-0 z-30 bg-zinc-900 bg-opacity-75 py-3 backdrop-blur-sm">
       <div className="flex w-full items-center justify-between px-4">
-        <Link href="/" scroll={false} className="relative h-6 w-6">
-          <Image src={K} alt="brand logotype" placeholder="blur" fill />
-        </Link>
+        <button type="button">
+          <MoonIcon className="h-6 w-6 text-white/80" />
+        </button>
         <Locale />
       </div>
     </nav>
-  );
-}
-
-function Hover({ blog }: { blog: boolean }) {
-  const icon =
-    "h-6 w-6 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 xs:h-10 xs:w-10";
-  return (
-    <span className="group absolute inset-0 z-20 flex items-center justify-center rounded-lg text-xl font-semibold transition-all duration-300 hover:bg-black hover:bg-opacity-75 hover:backdrop-blur-sm">
-      {blog ? (
-        <ArrowTopRightOnSquareIcon className={icon} />
-      ) : (
-        <ArrowsPointingOutIcon className={icon} />
-      )}
-    </span>
   );
 }
 
@@ -122,14 +133,15 @@ function ViewMore() {
   const translate = useLocale();
   return (
     <motion.div layout variants={variants}>
-      <div className="relative h-full min-h-[10rem] rounded-lg border-2 border-[#FAB0EB] bg-[#6973E9] p-6">
+      <div className="relative h-full min-h-[10rem] rounded-lg bg-white/5 p-6 ring-1 ring-white/10">
         <div className="flex h-full max-w-[30rem] items-center justify-center">
-          <h2 className="text-xs font-bold text-white xs:text-base sm:text-xl">
+          <h2 className="text-xs font-bold text-white/80 xs:text-base sm:text-xl">
             {translate("View more")}
           </h2>
-          <button type="button">
-            <Hover blog={false} />
-          </button>
+          <button
+            type="button"
+            className="group absolute inset-0 z-20 flex items-center justify-center rounded-lg border-2 border-transparent text-xl font-semibold transition-all duration-300 hover:border-white"
+          ></button>
         </div>
       </div>
     </motion.div>
@@ -152,7 +164,7 @@ function DesktopNav() {
         }}
       >
         <div
-          className="absolute top-[-0.2rem] left-[2.1rem] h-8 rounded-lg bg-[#AF7DE2] transition-all duration-150"
+          className="absolute top-[-0.2rem] left-[2.1rem] h-8 rounded-lg bg-white/10 transition-all duration-150"
           style={{ width: width + "rem", translate: x + "rem" }}
         ></div>
         {navigation.map((item, index) => (
@@ -195,9 +207,9 @@ function Post({ post }: { post: PostMeta }) {
   const { locale } = useRouter();
   return (
     <motion.div layout variants={variants}>
-      <div className="relative h-full rounded-lg border-2 border-[#FAB0EB] bg-[#6973E9] p-6">
+      <div className="relative h-full rounded-lg bg-white/5 p-6 ring-1 ring-white/10">
         <div className="max-w-[30rem]">
-          <h2 className="text-xs font-bold text-white xs:text-base sm:text-xl">
+          <h2 className="text-xs font-bold text-white/80 xs:text-base sm:text-xl">
             {post.title}
           </h2>
           <Link
@@ -205,7 +217,7 @@ function Post({ post }: { post: PostMeta }) {
             href={"/" + locale + "/posts/" + post.slug}
             className="block text-xl font-semibold"
           >
-            <Hover blog={true} />
+            <span className="group absolute inset-0 z-20 flex items-center justify-center rounded-lg border-2 border-transparent text-xl font-semibold transition-all duration-300 hover:border-white"></span>
           </Link>
         </div>
       </div>
@@ -226,7 +238,7 @@ function Tag({ post, className }: { post: PostMeta; className: string }) {
               : setTags([...tags, post.tag])
           }
           className={clsx(
-            tags.includes(post.tag) ? "bg-[#AF7DE2]" : "bg-[#3F49C2]",
+            tags.includes(post.tag) ? "bg-white/40" : "bg-white/5",
             className
           )}
         >
@@ -237,10 +249,34 @@ function Tag({ post, className }: { post: PostMeta; className: string }) {
   );
 }
 
+function Stats({ posts }: { posts: PostMeta[] }) {
+  const translate = useLocale();
+  const stats = [
+    { id: 1, name: translate("Posts"), value: posts.length / 2 },
+    { id: 2, name: translate("Projects"), value: projects.length },
+    { id: 3, name: translate("Subscribers"), value: 0 },
+  ];
+  return (
+    <div className="relative my-24 px-4">
+      <dl className="flex flex-col items-center gap-y-16 gap-x-8 text-center sm:flex-row sm:justify-between">
+        {stats.map((stat) => (
+          <div key={stat.id} className="flex flex-col gap-y-4">
+            <dt className="text-base leading-7 text-white/40">{stat.name}</dt>
+            <dd className="order-first text-3xl font-semibold tracking-tight text-white/80 sm:text-5xl">
+              <Counter to={stat.value} from={0} />
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <span id="stats" className="absolute -top-20"></span>
+    </div>
+  );
+}
+
 function Projects() {
   const translate = useLocale();
   return (
-    <div id="projects" className="mx-auto my-24 w-full px-4">
+    <div className="relative mx-auto my-24 w-full px-4">
       <div className="divide-y divide-white">
         <h2 className="text-4xl font-bold leading-10 tracking-tight text-white">
           {translate("Projects")}
@@ -248,13 +284,13 @@ function Projects() {
         <dl className="mt-10 space-y-6 divide-y divide-white">
           {projects.map((project) => (
             <dt key={project.href} className="pt-6">
-              <div className="group relative flex w-full items-start justify-between text-left text-white">
-                <span className="font-semibold leading-7 group-hover:text-[#FAB0EB] sm:text-xl">
+              <div className="relative flex w-full items-start justify-between text-left text-white">
+                <span className="font-semibold leading-7 sm:text-xl">
                   {project.name}
                 </span>
                 <a
                   href={project.href}
-                  className="absolute inset-0 z-20 flex h-7 items-center group-hover:text-[#FAB0EB]"
+                  className="absolute inset-0 z-20 flex h-7 items-center"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -265,6 +301,7 @@ function Projects() {
           ))}
         </dl>
       </div>
+      <span id="projects" className="absolute -top-20"></span>
     </div>
   );
 }
@@ -296,7 +333,7 @@ function Newsletter() {
             />
             <button
               type="submit"
-              className="flex-none rounded-md border-2 border-transparent bg-[#3F49C2] py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:border-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3F49C2]"
+              className="flex-none rounded-md border-2 border-transparent bg-white/5 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:border-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/10"
               disabled
             >
               {translate("Subscribe")}
@@ -357,13 +394,13 @@ function MobileNav() {
   const { route } = useRouter();
   return (
     <nav className="fixed bottom-5 z-20 flex w-full justify-center md:hidden">
-      <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-full bg-black bg-opacity-75 py-4 px-8 text-white backdrop-blur-sm xs:max-w-[20rem]">
+      <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-full bg-white/10 bg-opacity-90 py-4 px-8 text-white backdrop-blur-md xs:max-w-[20rem]">
         {navigation.map((item, index) => (
-          <Link key={index} href={item.href} scroll={false}>
+          <Link key={index} href={item.href}>
             <item.icon
               className={clsx(
-                route === item.href ? "text-[#FAB0EB]" : "text-white",
-                "h-7 w-7 xs:h-9 xs:w-9"
+                route === item.href ? "text-white/80" : "text-white/40",
+                "h-7 w-7 transition duration-300 hover:text-white/80 xs:h-9 xs:w-9"
               )}
             />
           </Link>
@@ -503,7 +540,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             </div>
           </div>
           <div className="order-0 flex flex-col xl:order-1">
-            <div className="relative mx-auto hidden h-64 w-full max-w-[16rem] sm:block sm:h-96 sm:max-w-[24rem] xl:ml-auto">
+            <div className="relative mx-auto hidden h-64 w-full max-w-[16rem] rounded-full bg-white/5 ring-1 ring-white/10 sm:block sm:h-96 sm:max-w-[24rem] xl:ml-auto">
               <Image src={Avatar} alt="avatar" placeholder="blur" fill />
             </div>
             <div className="hidden sm:mt-12 sm:block xl:hidden">
@@ -536,6 +573,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
           </div>
         </div>
         <div className="mx-auto sm:max-w-[35rem] xl:max-w-7xl">
+          <Stats posts={posts} />
           <Projects />
           <Newsletter />
         </div>

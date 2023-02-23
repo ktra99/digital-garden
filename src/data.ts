@@ -8,15 +8,15 @@ import {
 export const nav = {
   "en": [
     { x: 0, width: 4 },
-    { x: 5.15, width: 7 },
-    { x: 13.2, width: 6.5 },
-    { x: 20.65, width: 6 }
+    { x: 5.3, width: 4.5 },
+    { x: 11.1, width: 6.25 },
+    { x: 18.5, width: 5.8 }
   ],
   "sv": [
     { x: 0.05, width: 3.5 },
-    { x: 4.65, width: 7 },
+    { x: 4.75, width: 6.75 },
     { x: 12.75, width: 5.75 },
-    { x: 19.5, width: 6 }
+    { x: 19.65, width: 5.75 }
   ]
 }
 
@@ -50,9 +50,9 @@ export const navigation = [
     href: "/",
   },
   {
-    name: "Dashboard",
+    name: "Stats",
     icon: ChartBarSquareIcon,
-    href: "http://dashboard.ktra99.dev/",
+    href: "#stats",
   },
   {
     name: "Projects",
