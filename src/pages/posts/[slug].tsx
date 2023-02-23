@@ -72,10 +72,11 @@ function Navbar() {
 }
 
 function Footer() {
+  const translate = useLocale();
   return (
     <footer className="mx-auto mb-4 max-w-3xl pl-4 font-semibold text-white xs:mt-4 xs:mb-16 xs:text-lg">
       © {new Date().getFullYear() + " Kenny Tran."} {""}
-      {useLocale("All rights reserved.")}
+      {translate("All rights reserved.")}
     </footer>
   );
 }

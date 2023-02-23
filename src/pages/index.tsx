@@ -119,12 +119,13 @@ function Hover({ blog }: { blog: boolean }) {
 }
 
 function ViewMore() {
+  const translate = useLocale();
   return (
     <motion.div layout variants={variants}>
       <div className="relative h-full min-h-[10rem] rounded-lg border-2 border-[#FAB0EB] bg-[#6973E9] p-6">
         <div className="flex h-full max-w-[30rem] items-center justify-center">
           <h2 className="text-xs font-bold text-white xs:text-base sm:text-xl">
-            {useLocale("View more")}
+            {translate("View more")}
           </h2>
           <button type="button">
             <Hover blog={false} />
@@ -136,6 +137,7 @@ function ViewMore() {
 }
 
 function DesktopNav() {
+  const translate = useLocale();
   const { locale } = useRouter();
   const [x, setX] = useAtom(xAtom);
   const [width, setWidth] = useAtom(widthAtom);
@@ -163,7 +165,7 @@ function DesktopNav() {
               setWidth(coordinates[index].width);
             }}
           >
-            {useLocale(item.name)}
+            {translate(item.name)}
           </Link>
         ))}
       </div>
@@ -172,6 +174,7 @@ function DesktopNav() {
 }
 
 function Header() {
+  const translate = useLocale();
   return (
     <>
       <h2 className="text-4xl font-bold text-white xs:text-6xl sm:text-8xl">
@@ -179,7 +182,7 @@ function Header() {
       </h2>
       <div className="my-3 sm:w-[30rem]">
         <p className="text-lg leading-8 text-gray-300">
-          {useLocale(
+          {translate(
             "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations."
           )}
         </p>
@@ -235,11 +238,12 @@ function Tag({ post, className }: { post: PostMeta; className: string }) {
 }
 
 function Projects() {
+  const translate = useLocale();
   return (
     <div id="projects" className="mx-auto my-24 w-full px-4">
       <div className="divide-y divide-white">
         <h2 className="text-4xl font-bold leading-10 tracking-tight text-white">
-          {useLocale("Projects")}
+          {translate("Projects")}
         </h2>
         <dl className="mt-10 space-y-6 divide-y divide-white">
           {projects.map((project) => (
@@ -266,19 +270,20 @@ function Projects() {
 }
 
 function Newsletter() {
+  const translate = useLocale();
   return (
     <div className="relative isolate my-36 mx-auto overflow-hidden px-4">
       <div className="mx-auto grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 xl:max-w-none xl:grid-cols-2">
         <div className="max-w-xl xl:max-w-lg">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            {useLocale("Subscribe to my newsletter.")}
+            {translate("Subscribe to my newsletter.")}
           </h2>
           <p className="mt-4 text-lg leading-8 text-gray-300">
-            {useLocale("Don't miss out on exclusive content and updates!")}
+            {translate("Don't miss out on exclusive content and updates!")}
           </p>
           <div className="mt-6 flex max-w-md gap-x-4">
             <label htmlFor="email-address" className="sr-only">
-              {useLocale("Email address")}
+              {translate("Email address")}
             </label>
             <input
               id="email-address"
@@ -287,14 +292,14 @@ function Newsletter() {
               autoComplete="email"
               required
               className="min-w-0 flex-auto rounded-md border-2 border-transparent bg-white/5 px-3.5 py-2 text-white placeholder-white shadow-sm outline-none ring-1 ring-inset ring-white/10 transition-all duration-300 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
-              placeholder={useLocale("Enter your email")}
+              placeholder={translate("Enter your email")}
             />
             <button
               type="submit"
               className="flex-none rounded-md border-2 border-transparent bg-[#3F49C2] py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:border-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3F49C2]"
               disabled
             >
-              {useLocale("Subscribe")}
+              {translate("Subscribe")}
             </button>
           </div>
         </div>
@@ -307,10 +312,10 @@ function Newsletter() {
               />
             </div>
             <dt className="mt-4 font-semibold text-white">
-              {useLocale("Weekly articles")}
+              {translate("Weekly articles")}
             </dt>
             <dd className="mt-2 leading-7 text-gray-300">
-              {useLocale("Stay informed and inspired every week!")}
+              {translate("Stay informed and inspired every week!")}
             </dd>
           </div>
           <div className="flex flex-col items-start">
@@ -321,10 +326,10 @@ function Newsletter() {
               />
             </div>
             <dt className="mt-4 font-semibold text-white">
-              {useLocale("No spam")}
+              {translate("No spam")}
             </dt>
             <dd className="mt-2 leading-7 text-gray-300">
-              {useLocale(
+              {translate(
                 "I'll never share your information or spam your inbox."
               )}
             </dd>
@@ -336,12 +341,13 @@ function Newsletter() {
 }
 
 function Footer() {
+  const translate = useLocale();
   return (
     <footer className="mx-auto my-4 px-4 sm:max-w-[33rem] sm:px-0 xl:max-w-7xl xl:px-4">
       <hr />
       <mark className="mt-4 mb-24 block bg-transparent font-semibold text-white xs:mb-32 xs:text-lg sm:mt-6">
         © {new Date().getFullYear() + " Kenny Tran."} {""}
-        {useLocale("All rights reserved.")}
+        {translate("All rights reserved.")}
       </mark>
     </footer>
   );
@@ -368,12 +374,13 @@ function MobileNav() {
 }
 
 export default function Home({ posts }: { posts: PostMeta[] }) {
+  const translate = useLocale();
   const { locale } = useRouter();
   const [tags] = useAtom(tagAtom);
   const [_x, setX] = useAtom(xAtom);
   const [width, setWidth] = useAtom(widthAtom);
   const title = "Kenny Tran";
-  const description = useLocale(
+  const description = translate(
     "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations."
   );
   useEffect(() => {
