@@ -181,7 +181,7 @@ function Header() {
         KENNY TRAN
       </h2>
       <div className="my-3 sm:w-[30rem]">
-        <p className="text-lg leading-8 text-gray-300">
+        <p className="text-lg leading-8 text-white">
           {translate(
             "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations."
           )}
@@ -278,7 +278,7 @@ function Newsletter() {
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             {translate("Subscribe to my newsletter.")}
           </h2>
-          <p className="mt-4 text-lg leading-8 text-gray-300">
+          <p className="mt-4 text-lg leading-8 text-white">
             {translate("Don't miss out on exclusive content and updates!")}
           </p>
           <div className="mt-6 flex max-w-md gap-x-4">
@@ -314,7 +314,7 @@ function Newsletter() {
             <dt className="mt-4 font-semibold text-white">
               {translate("Weekly articles")}
             </dt>
-            <dd className="mt-2 leading-7 text-gray-300">
+            <dd className="mt-2 leading-7 text-white">
               {translate("Stay informed and inspired every week!")}
             </dd>
           </div>
@@ -328,7 +328,7 @@ function Newsletter() {
             <dt className="mt-4 font-semibold text-white">
               {translate("No spam")}
             </dt>
-            <dd className="mt-2 leading-7 text-gray-300">
+            <dd className="mt-2 leading-7 text-white">
               {translate(
                 "I'll never share your information or spam your inbox."
               )}
