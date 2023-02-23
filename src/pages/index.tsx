@@ -176,18 +176,18 @@ function DesktopNav() {
 function Header() {
   const translate = useLocale();
   return (
-    <>
+    <header className="space-y-3">
       <h2 className="text-4xl font-bold text-white xs:text-6xl sm:text-8xl">
         KENNY TRAN
       </h2>
-      <div className="my-3 sm:w-[30rem]">
+      <div className="sm:w-[30rem]">
         <p className="text-lg leading-8 text-white">
           {translate(
             "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations."
           )}
         </p>
       </div>
-    </>
+    </header>
   );
 }
 
