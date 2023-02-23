@@ -9,7 +9,6 @@ export type PostMeta = {
   slug: string
   title: string
   tag: string
-  time: string
   excerpt: string
   date: string
 }

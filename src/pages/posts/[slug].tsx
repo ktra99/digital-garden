@@ -72,9 +72,11 @@ function Navbar() {
 function Footer() {
   const translate = useLocale();
   return (
-    <footer className="mx-auto mb-4 max-w-3xl font-semibold text-white xs:mt-4 xs:mb-16 xs:text-lg">
-      © {new Date().getFullYear() + " Kenny Tran."} {""}
-      {translate("All rights reserved.")}
+    <footer className="mx-auto mb-4 max-w-3xl px-4 font-semibold text-white xs:mt-4 xs:mb-16 xs:text-lg">
+      <mark className="bg-transparent text-white">
+        © {new Date().getFullYear() + " Kenny Tran."} {""}
+        {translate("All rights reserved.")}
+      </mark>
     </footer>
   );
 }
@@ -113,6 +115,7 @@ export default function Post({ post }: { post: MDXPost }) {
               type: "image/jpeg",
             },
           ],
+          locale: locale,
           siteName: "ktra99.dev",
         }}
         twitter={{
@@ -132,8 +135,8 @@ export default function Post({ post }: { post: MDXPost }) {
         className="fixed block h-1 bg-white/80"
         style={{ width: scrollPosition + "%" }}
       ></span>
-      <main className="p-4">
-        <div className="mx-auto flex max-w-3xl flex-col justify-center">
+      <main>
+        <div className="mx-auto flex max-w-3xl flex-col justify-center p-4">
           <Link
             href="/"
             className="group mt-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition duration-300 hover:border-white"

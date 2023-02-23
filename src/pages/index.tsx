@@ -380,7 +380,7 @@ function Newsletter() {
 function Footer() {
   const translate = useLocale();
   return (
-    <footer className="mx-auto my-4 px-4 sm:max-w-[33rem] sm:px-0 xl:max-w-7xl xl:px-4">
+    <footer className="mx-auto my-4 px-4 sm:max-w-[33rem] sm:px-0 xl:max-w-7xl">
       <hr />
       <mark className="mt-4 mb-24 block bg-transparent font-semibold text-white xs:mb-32 xs:text-lg sm:mt-6">
         © {new Date().getFullYear() + " Kenny Tran."} {""}
@@ -394,15 +394,10 @@ function MobileNav() {
   const { route } = useRouter();
   return (
     <nav className="fixed bottom-5 z-20 flex w-full justify-center md:hidden">
-      <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-full bg-white/10 bg-opacity-90 py-4 px-8 text-white backdrop-blur-md xs:max-w-[20rem]">
+      <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-full bg-white/25 bg-opacity-90 py-4 px-8 backdrop-blur-md xs:max-w-[20rem]">
         {navigation.map((item, index) => (
           <Link key={index} href={item.href}>
-            <item.icon
-              className={clsx(
-                route === item.href ? "text-white/80" : "text-white/40",
-                "h-7 w-7 transition duration-300 hover:text-white/80 xs:h-9 xs:w-9"
-              )}
-            />
+            <item.icon className="h-7 w-7 text-white/80 transition duration-300 xs:h-9 xs:w-9" />
           </Link>
         ))}
       </div>
@@ -444,6 +439,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               type: "image/jpeg",
             },
           ],
+          locale: locale,
           siteName: "ktra99.dev",
         }}
         twitter={{
