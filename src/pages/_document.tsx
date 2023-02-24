@@ -15,6 +15,7 @@ export default function Document() {
           strategy="afterInteractive"
         />
         <Script
+          id="gtag-init"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer ||[];
