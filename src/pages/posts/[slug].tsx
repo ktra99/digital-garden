@@ -30,14 +30,14 @@ function Checkbox({ header, excerpt }: { header: string; excerpt: string }) {
           aria-describedby="checkbox-description"
           name="checkbox"
           type="checkbox"
-          className="h-6 w-6 rounded border-gray-300 text-[#3F49C2] transition duration-300 focus:ring-[#3F49C2]"
+          className="h-6 w-6 rounded border-white/20 text-white/10 transition duration-300 focus:ring-white/10"
         />
       </div>
       <div className="ml-3 -mt-3">
         <label htmlFor="checkbox" className="font-medium text-white">
           {header}
         </label>
-        <p id="checkbox-description" className="text-[#FAB0EB]">
+        <p id="checkbox-description" className="text-white/50">
           {excerpt}
         </p>
       </div>
@@ -185,6 +185,7 @@ export default function Post({ post }: { post: MDXPost }) {
         <div className="mx-auto flex max-w-3xl flex-col justify-center p-4">
           <Link
             href="/"
+            aria-label="back"
             className="group mt-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition duration-300 hover:border-white"
           >
             <ArrowLongLeftIcon className="h-6 w-6 text-white/40 transition duration-300 group-hover:text-white" />
@@ -205,25 +206,33 @@ export default function Post({ post }: { post: MDXPost }) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths: {
     params: {
       slug: string;
     };
     locale: string;
   }[] = [];
-  getSlugs().forEach((slug) => {
-    locales?.forEach((locale) => {
-      if (slug.includes("." + locale)) {
-        paths.push({
-          params: {
-            slug,
-          },
-          locale,
-        });
-      }
+  getSlugs()
+    .filter((slug) => slug.includes(".en"))
+    .forEach((slug) => {
+      paths.push({
+        params: {
+          slug,
+        },
+        locale: "en",
+      });
     });
-  });
+  getSlugs()
+    .filter((slug) => slug.includes(".sv"))
+    .forEach((slug) => {
+      paths.push({
+        params: {
+          slug,
+        },
+        locale: "sv",
+      });
+    });
   return {
     paths,
     fallback: false,

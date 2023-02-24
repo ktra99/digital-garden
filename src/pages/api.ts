@@ -11,7 +11,7 @@ export const getSlugs = (): string[] => {
   return paths.map((path) => {
     const parts = path.split("/")
     const filename = parts[parts.length - 1]
-    const [slug, ext] = filename.split(".mdx")
+    const [slug] = filename.split(".mdx")
     return slug
   })
 }
