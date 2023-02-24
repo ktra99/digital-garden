@@ -74,7 +74,7 @@ function Language({ url, language }: { url: string; language: string }) {
         })
       }
       className={clsx(
-        locale === language ? "text-white/80" : "text-white/40",
+        locale === language ? "text-white" : "text-white/50",
         "uppercase"
       )}
       disabled={locale === language}
@@ -94,7 +94,7 @@ function Locale() {
     : "/";
   return (
     <>
-      <div className="text-lg font-bold text-white/40">
+      <div className="text-lg font-bold text-white/50">
         <Language url={en} language="en" /> |{" "}
         <Language url={sv} language="sv" />
       </div>
@@ -106,7 +106,7 @@ function Navbar() {
   return (
     <nav className="sticky top-0 z-30 bg-zinc-900 bg-opacity-75 py-3 backdrop-blur-sm">
       <div className="flex w-full items-center justify-between px-4">
-        <button type="button">
+        <button type="button" aria-label="dark mode">
           <MoonIcon className="h-6 w-6 text-white/80" />
         </button>
         <Locale />

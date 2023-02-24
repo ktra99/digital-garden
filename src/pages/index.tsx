@@ -92,7 +92,7 @@ function Language({ url, language }: { url: string; language: string }) {
         });
       }}
       className={clsx(
-        locale === language ? "text-white/80" : "text-white/40",
+        locale === language ? "text-white" : "text-white/50",
         "uppercase"
       )}
       disabled={locale === language}
@@ -112,7 +112,7 @@ function Locale() {
     : "/";
   return (
     <>
-      <div className="text-lg font-bold text-white/40">
+      <div className="text-lg font-bold text-white/50">
         <Language url={en} language="en" /> |{" "}
         <Language url={sv} language="sv" />
       </div>
@@ -124,7 +124,7 @@ function Navbar() {
   return (
     <nav className="sticky top-0 z-30 bg-zinc-900 bg-opacity-75 py-3 backdrop-blur-sm">
       <div className="flex w-full items-center justify-between px-4">
-        <button type="button">
+        <button type="button" aria-label="dark mode">
           <MoonIcon className="h-6 w-6 text-white/80" />
         </button>
         <Locale />
@@ -136,7 +136,13 @@ function Navbar() {
 function ViewMore() {
   const translate = useLocale();
   return (
-    <motion.div layout variants={variants}>
+    <motion.div
+      layout
+      variants={variants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <div className="relative h-full min-h-[10rem] rounded-lg bg-white/5 p-6 ring-1 ring-white/10">
         <div className="flex h-full max-w-[30rem] items-center justify-center">
           <h2 className="text-xs font-bold text-white/80 xs:text-base sm:text-xl">
@@ -144,6 +150,7 @@ function ViewMore() {
           </h2>
           <button
             type="button"
+            aria-label="view more"
             className="absolute inset-0 z-20 flex items-center justify-center rounded-lg border-2 border-transparent text-xl font-semibold transition-all duration-300 hover:border-white"
           ></button>
         </div>
@@ -210,7 +217,13 @@ function Header() {
 function Post({ post }: { post: PostMeta }) {
   const { locale } = useRouter();
   return (
-    <motion.div layout variants={variants}>
+    <motion.div
+      layout
+      variants={variants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <div className="relative h-full rounded-lg bg-white/5 p-6 ring-1 ring-white/10">
         <div className="max-w-[30rem]">
           <h2 className="text-xs font-bold text-white/80 xs:text-base sm:text-xl">
@@ -219,6 +232,7 @@ function Post({ post }: { post: PostMeta }) {
           <Link
             locale={locale}
             href={"/" + locale + "/posts/" + post.slug}
+            aria-label={post.title}
             className="absolute inset-0 z-20 flex items-center justify-center rounded-lg border-2 border-transparent text-xl font-semibold transition-all duration-300 hover:border-white"
           ></Link>
         </div>
@@ -263,8 +277,8 @@ function Stats({ posts }: { posts: PostMeta[] }) {
       <dl className="flex flex-col items-center gap-y-16 gap-x-8 text-center sm:flex-row sm:justify-between">
         {stats.map((stat) => (
           <div key={stat.id} className="flex flex-col gap-y-4">
-            <dt className="text-base leading-7 text-white/40">{stat.name}</dt>
-            <dd className="order-first text-3xl font-semibold tracking-tight text-white/80 sm:text-5xl">
+            <dt className="text-base leading-7 text-white">{stat.name}</dt>
+            <dd className="order-first text-3xl font-semibold tracking-tight text-white sm:text-5xl">
               <Counter to={stat.value} from={0} />
             </dd>
           </div>
@@ -347,7 +361,7 @@ function Newsletter() {
             </button>
           </div>
         </div>
-        <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
           <div className="flex flex-col items-start">
             <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
               <CalendarDaysIcon
@@ -355,12 +369,12 @@ function Newsletter() {
                 aria-hidden="true"
               />
             </div>
-            <dt className="mt-4 font-semibold text-white">
+            <h4 className="mt-4 font-semibold text-white">
               {translate("Weekly articles")}
-            </dt>
-            <dd className="mt-2 leading-7 text-white">
+            </h4>
+            <p className="mt-2 leading-7 text-white">
               {translate("Stay informed and inspired every week!")}
-            </dd>
+            </p>
           </div>
           <div className="flex flex-col items-start">
             <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
@@ -369,16 +383,16 @@ function Newsletter() {
                 aria-hidden="true"
               />
             </div>
-            <dt className="mt-4 font-semibold text-white">
+            <h4 className="mt-4 font-semibold text-white">
               {translate("No spam")}
-            </dt>
-            <dd className="mt-2 leading-7 text-white">
+            </h4>
+            <p className="mt-2 leading-7 text-white">
               {translate(
                 "I'll never share your information or spam your inbox."
               )}
-            </dd>
+            </p>
           </div>
-        </dl>
+        </div>
       </div>
     </div>
   );
@@ -402,7 +416,7 @@ function MobileNav() {
     <nav className="fixed bottom-5 z-20 flex w-full justify-center md:hidden">
       <div className="mx-auto flex w-full max-w-[15rem] items-center justify-between rounded-full bg-white/25 bg-opacity-90 py-4 px-8 backdrop-blur-md xs:max-w-[20rem]">
         {navigation.map((item, index) => (
-          <Link key={index} href={item.href}>
+          <Link key={index} href={item.href} aria-label={item.href}>
             <item.icon className="h-7 w-7 text-white/80 transition duration-300 xs:h-9 xs:w-9" />
           </Link>
         ))}
@@ -551,7 +565,13 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
           </div>
           <div className="order-0 flex flex-col xl:order-1">
             <div className="relative mx-auto hidden h-64 w-full max-w-[16rem] rounded-full bg-white/5 ring-1 ring-white/10 sm:block sm:h-96 sm:max-w-[24rem] xl:ml-auto">
-              <Image src={Avatar} alt="avatar" placeholder="blur" fill />
+              <Image
+                src={Avatar}
+                alt="avatar"
+                placeholder="blur"
+                priority
+                fill
+              />
             </div>
             <div className="hidden sm:mt-12 sm:block xl:hidden">
               <Header />
