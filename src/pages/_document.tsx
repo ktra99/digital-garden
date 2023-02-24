@@ -1,7 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-
-const TRACKING_ID = process.env.NEXT_PUBLIC_GA4_TRACKING_ID!;
-
 export default function Document() {
   return (
     <Html>
@@ -16,21 +13,11 @@ export default function Document() {
         <Main />
         <NextScript />
         <script
-          src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
-        />
-        <script
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('consent','default',{
-              'ad_storage':'denied',
-              'analytics_storage':'denied',
-              'personalization_storage':'denied'
-            });
-            gtag('config', '${TRACKING_ID}');
-            gtag("set", "ads_data_redaction", true);
           `,
           }}
         />
