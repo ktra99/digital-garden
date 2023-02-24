@@ -1,8 +1,9 @@
 import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
+import { consentAtom, denyAtom } from "@src/atoms";
+import { variants } from "@src/data";
 import useLocale from "@src/hooks/useLocale";
-import { AnimatePresence, motion, Transition, Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useAtom } from "jotai";
-import { atomWithStorage } from "jotai/utils";
 import Link from "next/link";
 import Script from "next/script";
 import { useEffect, useState } from "react";
@@ -15,28 +16,7 @@ interface ConsentParams {
   personalization_storage: "granted" | "denied" | undefined;
 }
 
-const denyAtom = atomWithStorage("deny", false);
-const consentAtom = atomWithStorage("consent", false);
 const TRACKING_ID = process.env.NEXT_PUBLIC_GA4_TRACKING_ID!;
-
-const transition: Transition = {
-  duration: 0.25,
-  ease: "easeOut",
-};
-
-const variants: Variants = {
-  initial: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition,
-  },
-  exit: {
-    opacity: 0,
-    transition,
-  },
-};
 
 export default function Consent() {
   const translate = useLocale();
@@ -68,7 +48,7 @@ export default function Consent() {
             <div className="pointer-events-auto mx-auto max-w-xl rounded-xl bg-white p-6 shadow-lg ring-1 ring-gray-900/10">
               <p className="text-sm leading-6 text-gray-900">
                 {translate(
-                  "Hey there! We use cookies to provide you with a better browsing experience and to personalize content and ads. By clicking 'Accept,' you consent to our use of cookies. To learn more, please check out our privacy policy."
+                  "Hey there! I use cookies to provide you with a better browsing experience and to personalize content and ads. By clicking 'Accept,' you consent to my use of cookies. To learn more, please check out my privacy policy."
                 )}
                 <Link href="#">
                   <ArrowLongRightIcon className="ml-2 inline h-6 w-6" />
@@ -80,14 +60,14 @@ export default function Consent() {
                   onClick={acceptCookies}
                   className="rounded-md bg-gray-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                 >
-                  Accept all
+                  {translate("Accept all")}
                 </button>
                 <button
                   type="button"
                   onClick={() => setDeny(true)}
                   className="text-sm font-semibold leading-6 text-gray-900"
                 >
-                  Reject all
+                  {translate("Reject all")}
                 </button>
               </div>
             </div>

@@ -2,8 +2,9 @@ import {
   ChartBarSquareIcon,
   EnvelopeIcon,
   HomeIcon,
-  RectangleStackIcon,
+  RectangleStackIcon
 } from "@heroicons/react/20/solid";
+import { Transition, Variants } from "framer-motion";
 
 export const nav = {
   "en": [
@@ -50,3 +51,44 @@ export const navigation = [
     href: "mailto:kennytran.dev@outlook.com",
   },
 ];
+
+const transition: Transition = {
+  duration: 0.25,
+  ease: "easeOut",
+};
+
+const pageTransition: Transition = {
+  duration: 0.5,
+  ease: "easeInOut",
+}
+
+export const variants: Variants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition,
+  },
+  exit: {
+    opacity: 0,
+    transition,
+  },
+};
+
+export const pageVariants: Variants = {
+  initial: {
+    y: 40,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: pageTransition,
+  },
+  exit: {
+    y: 40,
+    opacity: 0,
+    transition: pageTransition,
+  },
+};

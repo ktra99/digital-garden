@@ -5,12 +5,19 @@ export type Post = {
   content: string
 }
 
+export type Slugs = {
+  en: string
+  sv: string
+}
+
 export type PostMeta = {
   slug: string
   title: string
   tag: string
+  slugs: Slugs
   excerpt: string
   date: string
+  locale: string
 }
 
 export type MDXPost = {

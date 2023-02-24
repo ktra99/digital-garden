@@ -20,7 +20,6 @@ export const getPostFromSlug = (slug: string): Post => {
   const postPath = path.join(POSTS_PATH, `${slug}.mdx`)
   const source = fs.readFileSync(postPath)
   const { content, data } = matter(source)
-
   return{
     content,
     meta: {
@@ -28,7 +27,9 @@ export const getPostFromSlug = (slug: string): Post => {
       excerpt: data.excerpt ?? "",
       title: data.title ?? "",
       tag: data.tag ?? "",
-      date: data.date ?? new Date().toString()
+      slugs: data.slugs ?? {},
+      date: data.date ?? new Date().toString(),
+      locale: data.locale ?? ""
     }
   }
 }

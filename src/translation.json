@@ -1,5 +1,6 @@
 {
   "sv": {
+    "Accept all": "Acceptera allt",
     "All rights reserved.": "Alla rättigheter förbehålles.",
     "Contact": "Kontakt",
     "Stats": "Statistik",
@@ -7,12 +8,13 @@
     "Email address": "E-postadress",
     "Enter your email": "Ange din e-postadress",
     "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations.": "Hej, jag är Kenny. Jag är en utvecklare baserad i Sverige. Min styrka ligger i att utveckla användarvänliga applikationer, med komplexa data- och API-integrationer.",
-    "Hey there! We use cookies to provide you with a better browsing experience and to personalize content and ads. By clicking 'Accept,' you consent to our use of cookies. To learn more, please check out our privacy policy.": "Hej där! Vi använder cookies för att ge dig en bättre webbupplevelse och för att anpassa innehåll och annonser. Genom att klicka på 'Acceptera' samtycker du till vår användning av cookies. Läs mer i vår sekretesspolicy.",
+    "Hey there! I use cookies to provide you with a better browsing experience and to personalize content and ads. By clicking 'Accept,' you consent to my use of cookies. To learn more, please check out my privacy policy.": "Hej där! Jag använder cookies för att ge dig en bättre webbupplevelse och för att anpassa innehåll och annonser. Genom att klicka på 'Acceptera' samtycker du till min användning av cookies. Om du vill veta mer, kolla in min sekretesspolicy.",
     "Home": "Hem",
     "I'll never share your information or spam your inbox.": "Jag kommer aldrig att dela din information eller spamma din inkorg.",
     "No spam": "Ingen spam",
     "Posts": "Inlägg",
     "Projects": "Projekt",
+    "Reject all": "Avvisa allt",
     "Stay informed and inspired every week!": "Håll dig informerad och inspirerad varje vecka!",
     "Subscribe": "Prenumerera",
     "Subscribers": "Prenumeranter",

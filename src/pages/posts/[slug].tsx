@@ -1,17 +1,21 @@
-import { ArrowLongLeftIcon, MoonIcon } from "@heroicons/react/20/solid";
+import { ArrowLongLeftIcon } from "@heroicons/react/20/solid";
+import Comment from "@src/components/comment";
+import Navbar from "@src/components/navbar";
 import useLocale from "@src/hooks/useLocale";
-import { getPostFromSlug, getSlugs } from "@src/pages/api";
+import { getAllPosts, getPostFromSlug } from "@src/pages/api";
 import { MDXPost } from "@src/types";
-import clsx from "clsx";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import rehypeHighlight from "rehype-highlight";
 import remarkGFM from "remark-gfm";
+import { motion } from "framer-motion";
+import { pageVariants } from "@src/data";
+import { PostMeta } from "@src/types";
 
 function Code({ code }: { code: string }) {
   return (
@@ -45,76 +49,6 @@ function Checkbox({ header, excerpt }: { header: string; excerpt: string }) {
   );
 }
 
-function Comments() {
-  const { query } = useRouter();
-  const ref = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    if (ref.current?.children.length) return;
-    const scriptElement = document.createElement("script");
-    scriptElement.async = true;
-    scriptElement.crossOrigin = "anonymous";
-    scriptElement.src = "https://utteranc.es/client.js";
-    scriptElement.setAttribute("issue-term", "pathname");
-    scriptElement.setAttribute("repo", "ktra99/digital-garden");
-    scriptElement.setAttribute("theme", "github-dark");
-    ref.current?.appendChild(scriptElement);
-  }, [query]);
-  return <div ref={ref} />;
-}
-
-function Language({ url, language }: { url: string; language: string }) {
-  const { push, locale } = useRouter();
-  return (
-    <button
-      type="button"
-      onClick={() =>
-        push(url, url, {
-          locale: language,
-          scroll: false,
-        })
-      }
-      className={clsx(
-        locale === language ? "text-white" : "text-white/50",
-        "uppercase"
-      )}
-      disabled={locale === language}
-    >
-      {language}
-    </button>
-  );
-}
-
-function Locale() {
-  const { query } = useRouter();
-  const en = query.slug
-    ? "/posts/" + String(query.slug).split(".sv")[0] + ".en"
-    : "/";
-  const sv = query.slug
-    ? "/posts/" + String(query.slug).split(".en")[0] + ".sv"
-    : "/";
-  return (
-    <>
-      <div className="text-lg font-bold text-white/50">
-        <Language url={en} language="en" /> |{" "}
-        <Language url={sv} language="sv" />
-      </div>
-    </>
-  );
-}
-
-function Navbar() {
-  return (
-    <nav className="sticky top-0 z-30 bg-zinc-900 bg-opacity-75 py-3 backdrop-blur-sm">
-      <div className="flex w-full items-center justify-between px-4">
-        <button type="button" aria-label="dark mode">
-          <MoonIcon className="h-6 w-6 text-white/80" />
-        </button>
-        <Locale />
-      </div>
-    </nav>
-  );
-}
-
 function Footer() {
   const translate = useLocale();
   return (
@@ -127,7 +61,13 @@ function Footer() {
   );
 }
 
-export default function Post({ post }: { post: MDXPost }) {
+export default function Post({
+  post,
+  posts,
+}: {
+  post: MDXPost;
+  posts: PostMeta[];
+}) {
   const { asPath, query, locale } = useRouter();
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
@@ -176,12 +116,17 @@ export default function Post({ post }: { post: MDXPost }) {
           },
         ]}
       />
-      <Navbar />
+      <Navbar posts={posts} />
       <span
         className="fixed block h-1 bg-white/80"
         style={{ width: scrollPosition + "%" }}
       ></span>
-      <main>
+      <motion.main
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
         <div className="mx-auto flex max-w-3xl flex-col justify-center p-4">
           <Link
             href="/"
@@ -199,9 +144,9 @@ export default function Post({ post }: { post: MDXPost }) {
             <hr />
           </div>
         </div>
-      </main>
+      </motion.main>
       <Footer />
-      <Comments key={String(query.slug)} />
+      <Comment key={query.slug as string} />
     </>
   );
 }
@@ -213,26 +158,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
     locale: string;
   }[] = [];
-  getSlugs()
-    .filter((slug) => slug.includes(".en"))
-    .forEach((slug) => {
-      paths.push({
-        params: {
-          slug,
-        },
-        locale: "en",
-      });
+  getAllPosts().forEach((post) => {
+    paths.push({
+      params: {
+        slug: post.meta.slug,
+      },
+      locale: post.meta.locale,
     });
-  getSlugs()
-    .filter((slug) => slug.includes(".sv"))
-    .forEach((slug) => {
-      paths.push({
-        params: {
-          slug,
-        },
-        locale: "sv",
-      });
-    });
+  });
   return {
     paths,
     fallback: false,
@@ -248,12 +181,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       rehypePlugins: [rehypeHighlight],
     },
   });
+  const posts = getAllPosts().map((post) => post.meta);
   return {
     props: {
       post: {
         source: mdxSource,
         meta,
       },
+      posts,
     },
   };
 };
