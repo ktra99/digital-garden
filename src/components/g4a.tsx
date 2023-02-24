@@ -46,6 +46,12 @@ export default memo(function GoogleAnalytics() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            gtag('consent','default',{
+              'ad_storage':'denied',
+              'analytics_storage':'denied',
+              'personalization_storage':'denied'
+            });
+            gtag("set", "ads_data_redaction", true);
           `,
         }}
       />
