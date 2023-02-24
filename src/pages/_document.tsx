@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { Html, Head, Main, NextScript } from "next/document";
 
 const TRACKING_ID = process.env.NEXT_PUBLIC_GA4_TRACKING_ID!;
@@ -16,9 +15,9 @@ export default function Document() {
       <body className="bg-zinc-900">
         <Main />
         <NextScript />
-        <Script
+        <script
           src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
-        ></Script>
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
