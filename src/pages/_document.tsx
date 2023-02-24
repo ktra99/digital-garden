@@ -1,32 +1,43 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Head, Html, Main, NextScript } from "next/document";
+import Script from "next/script";
+
+const TRACKING_ID = process.env.NEXT_PUBLIC_GA4_TRACKING_ID!;
+
 export default function Document() {
   return (
     <Html>
       <Head />
-      <script
-        defer
-        src="https://unpkg.com/@tinybirdco/flock.js"
-        data-host="https://api.tinybird.co"
-        data-token="p.eyJ1IjogIjBkYTk2NzgyLTFhNDYtNGI4OC1iZDNiLTcwZTg2Y2E5M2IzMyIsICJpZCI6ICJkMTJmZDQwYS00N2RhLTQzMGItODY1Ny1kOWI3NGNlOTM1MGEifQ.DBqMM9is_hoQwUz-yHUUzx2Effwk-T07lselNt8XA20"
-      />
       <body className="bg-zinc-900">
         <Main />
         <NextScript />
-        <script
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+            __html: `window.dataLayer = window.dataLayer ||[];
+            function gtag(){window.dataLayer.push(arguments);}
             gtag('consent','default',{
               'ad_storage':'denied',
               'analytics_storage':'denied',
               'personalization_storage':'denied'
             });
-            gtag("set", "ads_data_redaction", true);
-          `,
+            gtag("set", "ads_data_redaction", true);`,
           }}
-        />
+        ></Script>
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${TRACKING_ID}');`,
+          }}
+        ></Script>
       </body>
     </Html>
   );
