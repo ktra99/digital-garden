@@ -1,7 +1,4 @@
 import { ArrowLongLeftIcon, MoonIcon } from "@heroicons/react/20/solid";
-import Checkbox from "@src/components/checkbox";
-import Code from "@src/components/code";
-import Comments from "@src/components/comments";
 import useLocale from "@src/hooks/useLocale";
 import { getPostFromSlug, getSlugs } from "@src/pages/api";
 import { MDXPost } from "@src/types";
@@ -12,9 +9,58 @@ import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import rehypeHighlight from "rehype-highlight";
 import remarkGFM from "remark-gfm";
+
+function Code({ code }: { code: string }) {
+  return (
+    <code className="mx-2 rounded-md bg-white/20 px-1.5 py-1 text-base">
+      {code}
+    </code>
+  );
+}
+
+function Checkbox({ header, excerpt }: { header: string; excerpt: string }) {
+  return (
+    <div className="relative flex items-start py-6">
+      <div className="flex h-5 items-center">
+        <input
+          id="checkbox"
+          aria-describedby="checkbox-description"
+          name="checkbox"
+          type="checkbox"
+          className="h-6 w-6 rounded border-gray-300 text-[#3F49C2] transition duration-300 focus:ring-[#3F49C2]"
+        />
+      </div>
+      <div className="ml-3 -mt-3">
+        <label htmlFor="checkbox" className="font-medium text-white">
+          {header}
+        </label>
+        <p id="checkbox-description" className="text-[#FAB0EB]">
+          {excerpt}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function Comments() {
+  const { query } = useRouter();
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (ref.current?.children.length) return;
+    const scriptElement = document.createElement("script");
+    scriptElement.async = true;
+    scriptElement.crossOrigin = "anonymous";
+    scriptElement.src = "https://utteranc.es/client.js";
+    scriptElement.setAttribute("issue-term", "pathname");
+    scriptElement.setAttribute("repo", "ktra99/digital-garden");
+    scriptElement.setAttribute("theme", "github-dark");
+    ref.current?.appendChild(scriptElement);
+  }, [query]);
+  return <div ref={ref} />;
+}
 
 function Language({ url, language }: { url: string; language: string }) {
   const { push, locale } = useRouter();
