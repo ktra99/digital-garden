@@ -1,4 +1,4 @@
-![screenshot](./public/og.png)
+![screenshot](./public/digital-garden.png)
 
 ## Run Locally
 
