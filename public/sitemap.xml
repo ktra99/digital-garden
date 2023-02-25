@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.ktra99.dev</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/posts/are-state-management-libraries-like-jotai-or-zustand-any-good</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv/posts/ar-state-management-bibliotek-som-jotai-eller-zustand-nagot-bra</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv/posts/hur-uppratthaller-man-en-anslutning-med-webrtc</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/posts/how-to-maintain-a-connection-using-webrtc</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/posts/when-should-one-use-proxy-objects-in-javascript</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv/posts/nar-ska-man-anvanda-proxyobjekt-i-javascript</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/posts/what-career-paths-are-available-for-web-development-in-2023</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv/posts/vilka-karriarvagar-finns-tillgangliga-for-webbutveckling-under-2023</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/sv/posts/hur-blir-man-flytande-i-ett-frammande-sprak</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.ktra99.dev/posts/how-to-become-fluent-in-a-foreign-language</loc><lastmod>2023-02-24T22:43:34.851Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/kan-samtycke-till-cookies-hanteras-dynamiskt-med-GTM</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/can-cookie-consent-be-managed-dynamically-with-gtm</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/are-state-management-libraries-like-jotai-or-zustand-any-good</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/ar-state-management-bibliotek-som-jotai-eller-zustand-nagot-bra</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/hur-uppratthaller-man-en-anslutning-med-webrtc</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/how-to-maintain-a-connection-using-webrtc</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/when-should-one-use-proxy-objects-in-javascript</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/nar-ska-man-anvanda-proxyobjekt-i-javascript</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/what-career-paths-are-available-for-web-development-in-2023</loc><lastmod>2023-02-25T19:11:34.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/vilka-karriarvagar-finns-tillgangliga-for-webbutveckling-under-2023</loc><lastmod>2023-02-25T19:11:34.612Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv/posts/hur-blir-man-flytande-i-ett-frammande-sprak</loc><lastmod>2023-02-25T19:11:34.612Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/posts/how-to-become-fluent-in-a-foreign-language</loc><lastmod>2023-02-25T19:11:34.612Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.ktra99.dev/sv</loc><lastmod>2023-02-25T19:11:34.612Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
