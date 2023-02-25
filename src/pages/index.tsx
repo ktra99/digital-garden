@@ -2,7 +2,6 @@ import { widthAtom, xAtom } from "@src/atoms";
 import Command from "@src/components/command";
 import { Page as PageFooter } from "@src/components/footer";
 import { Hero, Tablet as TabletHero } from "@src/components/hero";
-import { Mobile as MobileNav } from "@src/components/nav";
 import Navbar from "@src/components/navbar";
 import Newsletter from "@src/components/newsletter";
 import Posts from "@src/components/posts";
@@ -103,7 +102,6 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
         </div>
       </motion.main>
       <PageFooter />
-      <MobileNav />
     </>
   );
 }

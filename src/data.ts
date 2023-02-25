@@ -24,7 +24,7 @@ export const nav = {
 export const projects = [
   {
     name: "Digital garden",
-    image: "/og.png",
+    image: "/digital-garden.png",
     href: "https://github.com/ktra99/digital-garden",
   },
 ];
