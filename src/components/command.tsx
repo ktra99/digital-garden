@@ -5,12 +5,11 @@ import clsx from "clsx";
 import { useAtom } from "jotai";
 import { Fragment, useState } from "react";
 import { PostMeta } from "@src/types";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 
 export default function Command({ posts }: { posts: PostMeta[] }) {
-  const { locale } = useRouter();
+  const { push, locale } = useRouter();
   const [query, setQuery] = useState("");
   const [command, setCommand] = useAtom(commandAtom);
   return (
@@ -100,10 +99,16 @@ export default function Command({ posts }: { posts: PostMeta[] }) {
                           </div>
                           <div className="group relative">
                             <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                              <Link href={"/" + locale + "/posts/" + post.slug}>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setCommand(false);
+                                  push("/" + locale + "/posts/" + post.slug);
+                                }}
+                              >
                                 <span className="absolute inset-0" />
                                 {post.title}
-                              </Link>
+                              </button>
                             </h3>
                             <p className="line-clamp-3 mt-5 text-sm leading-6 text-gray-600">
                               {post.excerpt}

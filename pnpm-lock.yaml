@@ -4,7 +4,6 @@ specifiers:
   '@headlessui/react': ^1.7.9
   '@heroicons/react': ^2.0.14
   '@next/env': ^13.1.6
-  '@next/font': 13.2.1
   '@tailwindcss/forms': ^0.5.3
   '@types/glob': ^8.0.1
   '@types/gtag.js': ^0.0.12
@@ -47,7 +46,6 @@ dependencies:
   '@headlessui/react': 1.7.9_biqbaboplfbrettd7655fr4n2y
   '@heroicons/react': 2.0.14_react@18.2.0
   '@next/env': 13.1.6
-  '@next/font': 13.2.1
   '@types/gtag.js': 0.0.12
   '@types/node': 18.14.1
   '@types/react': 18.0.28
@@ -536,10 +534,6 @@ packages:
     resolution: {integrity: sha512-r0i5rcO6SMAZtqiGarUVMr3k256X0R0j6pEkKg4PxqUW+hG0qgMxRVAJsuoRG5OBFkCOlSfWZJ0mP9fQdCcyNg==}
     dependencies:
       glob: 7.1.7
-    dev: false
-
-  /@next/font/13.2.1:
-    resolution: {integrity: sha512-4sergLt7xp9+mZuKME/xM4tLlHGTcmL7naCq0qCTcAlof6NnttshYgiLOdhSiy0NcI+/yM3BjvdEk++O96UzTg==}
     dev: false
 
   /@next/swc-android-arm-eabi/13.2.1:

@@ -13,7 +13,6 @@
     "@headlessui/react": "^1.7.9",
     "@heroicons/react": "^2.0.14",
     "@next/env": "^13.1.6",
-    "@next/font": "13.2.1",
     "@types/gtag.js": "^0.0.12",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",
