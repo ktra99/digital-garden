@@ -16,7 +16,7 @@ export type PostMeta = {
   tag: string
   slugs: Slugs
   excerpt: string
-  date: string
+  date: Date
   locale: string
 }
 

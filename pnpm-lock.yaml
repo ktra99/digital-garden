@@ -14,6 +14,7 @@ specifiers:
   '@vercel/analytics': ^0.1.8
   autoprefixer: ^10.4.13
   clsx: ^1.2.1
+  date-fns: ^2.29.3
   eslint: 8.34.0
   eslint-config-next: 13.2.1
   framer-motion: ^9.0.1
@@ -53,6 +54,7 @@ dependencies:
   '@types/react-dom': 18.0.11
   '@vercel/analytics': 0.1.8_react@18.2.0
   clsx: 1.2.1
+  date-fns: 2.29.3
   eslint: 8.34.0
   eslint-config-next: 13.2.1_7kw3g6rralp5ps6mg3uyzz6azm
   framer-motion: 9.0.1_biqbaboplfbrettd7655fr4n2y
@@ -1466,6 +1468,11 @@ packages:
 
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
+    dev: false
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
     dev: false
 
   /debug/3.2.7:

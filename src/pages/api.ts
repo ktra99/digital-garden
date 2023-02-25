@@ -28,7 +28,7 @@ export const getPostFromSlug = (slug: string): Post => {
       title: data.title ?? "",
       tag: data.tag ?? "",
       slugs: data.slugs ?? {},
-      date: data.date ?? new Date().toString(),
+      date: data.date ?? new Date(),
       locale: data.locale ?? ""
     }
   }

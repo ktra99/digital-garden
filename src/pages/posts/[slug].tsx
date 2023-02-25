@@ -1,65 +1,21 @@
 import { ArrowLongLeftIcon } from "@heroicons/react/20/solid";
 import Comment from "@src/components/comment";
+import { Post as PostFooter } from "@src/components/footer";
+import { Checkbox, Code } from "@src/components/mdx";
 import Navbar from "@src/components/navbar";
-import useLocale from "@src/hooks/useLocale";
+import { pageVariants } from "@src/data";
 import { getAllPosts, getPostFromSlug } from "@src/pages/api";
-import { MDXPost } from "@src/types";
+import { MDXPost, PostMeta } from "@src/types";
+import { motion } from "framer-motion";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import useScroll from "@src/hooks/useScroll";
 import rehypeHighlight from "rehype-highlight";
 import remarkGFM from "remark-gfm";
-import { motion } from "framer-motion";
-import { pageVariants } from "@src/data";
-import { PostMeta } from "@src/types";
-
-function Code({ code }: { code: string }) {
-  return (
-    <code className="mx-2 rounded-md bg-white/20 px-1.5 py-1 text-base">
-      {code}
-    </code>
-  );
-}
-
-function Checkbox({ header, excerpt }: { header: string; excerpt: string }) {
-  return (
-    <div className="relative flex items-start py-6">
-      <div className="flex h-5 items-center">
-        <input
-          id="checkbox"
-          aria-describedby="checkbox-description"
-          name="checkbox"
-          type="checkbox"
-          className="h-6 w-6 rounded border-white/20 text-white/10 transition duration-300 focus:ring-white/10"
-        />
-      </div>
-      <div className="ml-3 -mt-3">
-        <label htmlFor="checkbox" className="font-medium text-white">
-          {header}
-        </label>
-        <p id="checkbox-description" className="text-white/50">
-          {excerpt}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function Footer() {
-  const translate = useLocale();
-  return (
-    <footer className="mx-auto mb-4 max-w-3xl px-4 font-semibold text-white xs:mt-4 xs:mb-16 xs:text-lg">
-      <mark className="bg-transparent text-white">
-        © {new Date().getFullYear() + " Kenny Tran."} {""}
-        {translate("All rights reserved.")}
-      </mark>
-    </footer>
-  );
-}
 
 export default function Post({
   post,
@@ -68,20 +24,8 @@ export default function Post({
   post: MDXPost;
   posts: PostMeta[];
 }) {
+  const scrollPosition = useScroll();
   const { asPath, query, locale } = useRouter();
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
-    const position =
-      (window.scrollY / (document.body.offsetHeight - window.innerHeight)) *
-      100;
-    setScrollPosition(position);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   const canonical = `https://ktra99.dev` + asPath;
   return (
     <>
@@ -145,7 +89,7 @@ export default function Post({
           </div>
         </div>
       </motion.main>
-      <Footer />
+      <PostFooter />
       <Comment key={query.slug as string} />
     </>
   );
