@@ -1,0 +1,76 @@
+---
+title: Can cookie consent be managed dynamically with GTM?
+tag: COOKIES
+slugs:
+  {
+    en: "can-cookie-consent-be-managed-dynamically-with-gtm",
+    sv: "kan-samtycke-till-cookies-hanteras-dynamiskt-med-GTM",
+  }
+excerpt: Cookie consent is an important aspect of website compliance, but managing it can be a challenge. In this post, we will explore whether cookie consent can be managed dynamically with Google Tag Manager (GTM).
+date: 2023-02-25
+locale: "en"
+---
+
+![teal padlock on link fence](https://images.unsplash.com/photo-1523484489927-4aa8bf9a99d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2666&q=80)
+Image by [@paulius005](https://unsplash.com/@paulius005)
+
+## What is Google Tag Manager (GTM)?
+
+Google Tag Manager is a free tag management system provided by Google. It enables website owners to manage and deploy marketing and analytics tags (such as Google Analytics, Google Ads, etc.) on their website without the need for any coding expertise. GTM works by placing a single container tag on a website, which then loads and manages all the other tags added to the container.
+
+## What is cookie consent?
+
+Cookie consent refers to the process of obtaining a user's consent to store cookies on their device. Under GDPR and other data protection laws, website owners are required to obtain informed consent from users before storing or processing their data. This informed consent typically takes the form of a cookie banner or pop-up, which appears on a website when a user first visits it.
+
+## Can cookie consent be managed dynamically with GTM?
+
+The short answer is yes, cookie consent can be managed dynamically with GTM. However, it is not a straightforward process, and it requires some technical knowledge and expertise.
+One way to manage cookie consent dynamically with GTM is to use a third-party tool or plugin that is designed to work with GTM. For example, Cookiebot is a popular cookie consent management tool that can be integrated with GTM to manage cookie consent dynamically. Cookiebot provides a GTM tag that can be added to the GTM container, which then loads and manages the cookie consent banner or pop-up on the website.
+Another way to manage cookie consent dynamically with GTM is to use custom JavaScript code to trigger the cookie consent banner or pop-up. This approach requires more technical knowledge and expertise, but it provides greater flexibility and customization options. Here's an example of how this can be achieved:
+
+```javascript
+// Event listener for user consent
+window.addEventListener("load", function () {
+  // Check if user has given consent previously
+  const userConsent = localStorage.getItem("cookieConsent");
+  if (userConsent === "true") {
+    // Load all scripts and tags
+    loadAllScriptsAndTags();
+  } else {
+    // Show cookie consent banner
+    showCookieConsentBanner();
+
+    // Add event listener for consent button click
+    const consentButton = document.getElementById("cookie-consent-button");
+    consentButton.addEventListener("click", function () {
+      // Save user's consent choice to local storage
+      localStorage.setItem("cookieConsent", "true");
+
+      // Remove cookie consent banner
+      const cookieConsentBanner = document.getElementById(
+        "cookie-consent-banner"
+      );
+      cookieConsentBanner.parentNode.removeChild(cookieConsentBanner);
+
+      // Load all scripts and tags
+      loadAllScriptsAndTags();
+    });
+  }
+});
+```
+
+Here, we're using the<Code code="addEventListener"/>method to listen for the<Code code="load"/>event, which is triggered when the page finishes loading. We're then checking if the user has previously given consent by checking the value of the<Code code="cookieConsent"/>key in the browser's local storage.
+
+If the user has given consent previously, we load all the scripts and tags by calling the<Code code="loadAllScriptsAndTags"/>function.
+
+If the user has not given consent, we show the cookie consent banner by calling the<Code code="showCookieConsentBanner"/>function. We then add an event listener to the consent button, which listens for a<Code code="click"/>event. When the user clicks the consent button, we save their consent choice to local storage by setting the value of the<Code code="cookieConsent"/>key to true. We then remove the cookie consent banner and load all the scripts and tags by calling the<Code code="loadAllScriptsAndTags"/>function.
+
+That's it! We've set up a basic cookie consent management system. Of course, this is just a starting point, and you'll likely need to customize this code to fit your specific use case. But hopefully this gives you an idea of how to get started.
+
+## Further Reading
+
+If you're interested in learning more about cookie consent and data protection, take a look at some of the resources down below -
+
+- [General Data Protection Regulation (GDPR)](https://gdpr.eu/)
+- [Cookie Consent Management with Google Tag Manager](https://support.google.com/tagmanager/answer/10718549?hl=en)
+- [How to Implement Google Analytics with GDPR Compliance](https://support.google.com/analytics/answer/9019185?hl=en#zippy=%2Cin-this-article)

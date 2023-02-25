@@ -83,7 +83,6 @@ export default function Post({
             {post.meta.title}
           </h1>
           <div id="mdx" className="w-full space-y-6 font-sans text-white">
-            <p>{post.meta.excerpt}</p>
             <MDXRemote {...post.source} components={{ Code, Checkbox }} />
             <hr />
           </div>

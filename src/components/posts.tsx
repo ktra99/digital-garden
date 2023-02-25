@@ -23,6 +23,7 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
                 (post: PostMeta) =>
                   post.locale === locale && tags.includes(post.tag)
               )
+              .slice(0, 5)
               .map((post: PostMeta) => (
                 <Post post={post} key={post.slug} />
               ))}
@@ -52,6 +53,7 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
           <>
             {posts
               .filter((post: PostMeta) => post.locale === locale)
+              .slice(0, 5)
               .map((post: PostMeta) => (
                 <Post post={post} key={post.slug} />
               ))}

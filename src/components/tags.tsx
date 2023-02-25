@@ -9,6 +9,7 @@ export function Desktop({ posts }: { posts: PostMeta[] }) {
       <div className="my-12 flex max-w-lg flex-wrap items-center justify-end space-x-6 text-lg xl:mt-24">
         {posts
           .filter((post: PostMeta) => post.locale === locale)
+          .slice(0, 5)
           .map((post: PostMeta) => (
             <Tag
               key={post.slug}
@@ -28,6 +29,7 @@ export function Mobile({ posts }: { posts: PostMeta[] }) {
       <div className="flex flex-wrap items-center text-xs xs:text-sm sm:space-x-2">
         {posts
           .filter((post: PostMeta) => post.locale === locale)
+          .slice(0, 5)
           .map((post: PostMeta) => (
             <Tag
               key={post.slug}

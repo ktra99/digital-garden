@@ -14,15 +14,11 @@ locale: "en"
 ![people video chatting on a laptop](https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80)
 Image by [@priscilladupreez](https://unsplash.com/@priscilladupreez)
 
-# The Basics of WebRTC
-
----
+## The Basics of WebRTC
 
 WebRTC uses a peer-to-peer (P2P) architecture where two peers communicate directly with each other, without going through a central server. This allows for faster and more efficient communication, but it also means that the connection between peers must be maintained by the peers themselves.
 
-# Signaling
-
----
+## Signaling
 
 The first step in establishing a WebRTC connection is signaling. Signaling is the process of exchanging metadata between peers to establish a connection. Metadata includes information such as session descriptions, ICE candidates, and network information.
 
@@ -48,9 +44,7 @@ const dataChannel = pc.createDataChannel('data');
 dataChannel.send('Hello, world!');
 ```
 
-# Handling Disconnects
-
----
+## Handling Disconnects
 
 One of the challenges in maintaining a WebRTC connection is handling disconnects. There are many reasons why a peer might disconnect, such as network issues, device shutdown, or user action.
 
@@ -69,9 +63,7 @@ pc.oniceconnectionstatechange = event => {
 
 Once a disconnect has been detected, there are several strategies for handling it. One approach is to try to reconnect the peers by exchanging metadata and establishing a new connection. Another approach is to gracefully terminate the connection and inform the user that the connection has been lost.
 
-# Handling NAT Traversal
-
----
+## Handling NAT Traversal
 
 Another challenge in maintaining a WebRTC connection is NAT traversal. NAT (Network Address Translation) is a technique used by routers to map multiple private IP addresses to a single public IP address.
 

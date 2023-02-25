@@ -32,9 +32,16 @@
   border-radius: 0.5rem;
 }
 
+#mdx ol{
+  list-style-type: decimal;
+}
+
+#mdx ul{
+  list-style-type: disc;
+}
+
 #mdx ol, #mdx ul{
   padding-left: 1.5rem;
-  list-style-type: decimal;
 }
 
 #mdx p, #mdx ol, #mdx ul, #mdx label{

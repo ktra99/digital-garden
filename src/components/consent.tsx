@@ -79,7 +79,7 @@ export default function Consent() {
         strategy="afterInteractive"
       />
       <Script
-        id="google-analytics"
+        id="gtag-init"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `window.dataLayer = window.dataLayer || [];
@@ -96,7 +96,7 @@ export default function Consent() {
       ></Script>
       {consent && (
         <Script
-          id="google-analytics"
+          id="gtag-update"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `

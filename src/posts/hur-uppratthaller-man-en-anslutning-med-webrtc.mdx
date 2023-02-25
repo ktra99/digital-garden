@@ -14,15 +14,11 @@ locale: "sv"
 ![people video chatting on a laptop](https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80)
 Bild av [@priscilladupreez](https://unsplash.com/@priscilladupreez)
 
-# Grunderna i WebRTC
-
----
+## Grunderna i WebRTC
 
 WebRTC använder en peer-to-peer (P2P) arkitektur där två enheter kommunicerar direkt med varandra, utan att gå via en central server. Detta möjliggör snabbare och effektivare kommunikation, men det betyder också att kopplingen mellan enheter måste upprätthållas av enheterna själva.
 
-# Signalering
-
----
+## Signalering
 
 Det första steget för att upprätta en WebRTC-anslutning är signalering. Signalering är processen av att utbyta metadata mellan enheter för att upprätta en anslutning. Metadata inkluderar information som sessionsbeskrivningar, ICE-kandidater och nätverksinformation.
 
@@ -48,9 +44,7 @@ const dataChannel = pc.createDataChannel('data');
 dataChannel.send('Hello, world!');
 ```
 
-# Hantera frånkoppling
-
----
+## Hantera frånkoppling
 
 En av utmaningarna med att upprätthålla en WebRTC-anslutning är att hantera frånkopplingar. Det finns många anledningar till att en enhet kan kopplas ifrån, till exempel nätverksproblem, avstängning av enheten eller användaråtgärder.
 
@@ -69,9 +63,7 @@ pc.oniceconnectionstatechange = event => {
 
 När en frånkoppling har upptäckts finns det flera strategier för att hantera den. Ett tillvägagångssätt är att försöka återkoppla enheter genom att utbyta metadata och upprätta en ny anslutning. Ett annat tillvägagångssätt är att graciöst avsluta anslutningen och informera användaren om att anslutningen har förlorats.
 
-# Hantera NAT-traversering
-
----
+## Hantera NAT-traversering
 
 En annan utmaning för att upprätthålla en WebRTC-anslutning är NAT-traversering. NAT (Network Address Translation) är en teknik som används av routrar för att mappa flera privata IP-adresser till en enda offentlig IP-adress.
 
