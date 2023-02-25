@@ -105,6 +105,7 @@ export default function Command({ posts }: { posts: PostMeta[] }) {
                                   setCommand(false);
                                   push("/" + locale + "/posts/" + post.slug);
                                 }}
+                                className="text-left"
                               >
                                 <span className="absolute inset-0" />
                                 {post.title}
