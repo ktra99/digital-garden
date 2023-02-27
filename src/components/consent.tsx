@@ -24,6 +24,7 @@ export default function Consent() {
   const [loading, setLoading] = useState(true);
   const [consent, setConsent] = useAtom(consentAtom);
   const acceptCookies = () => {
+    setDeny(false);
     setConsent(true);
     gtag("consent", "update", {
       ad_storage: "granted",
@@ -33,6 +34,7 @@ export default function Consent() {
   };
   const denyCookies = () => {
     setDeny(true);
+    setConsent(false);
     gtag("consent", "update", {
       ad_storage: "denied",
       analytics_storage: "denied",
