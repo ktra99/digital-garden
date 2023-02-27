@@ -41,6 +41,8 @@ This is my digital garden built on Next.js and MDX. Feel free to contribute and 
 - [x] Contact link
 - [x] Cookie policy
 - [ ] Set up newsletter
+- [ ] Likes & views for each blog post
+- [ ] Branding section + page
 
 ## License
 
