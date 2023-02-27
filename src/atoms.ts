@@ -5,5 +5,4 @@ export const xAtom = atom(0);
 export const widthAtom = atom(0);
 export const commandAtom = atom(false);
 export const tagAtom = atom<string[]>([]);
-export const denyAtom = atomWithStorage("deny", false);
-export const consentAtom = atomWithStorage("consent", false);
+export const consentAtom = atomWithStorage<boolean | null>("consent", null);

@@ -1,5 +1,13 @@
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
+export interface ConsentParams {
+  ad_storage?: "granted" | "denied" | undefined;
+  analytics_storage?: "granted" | "denied" | undefined;
+  wait_for_update?: number | undefined;
+  region?: string[] | undefined;
+  personalization_storage: "granted" | "denied" | undefined;
+}
+
 export type Post = {
   meta: PostMeta
   content: string

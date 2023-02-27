@@ -1,6 +1,6 @@
-import { consentAtom, denyAtom, widthAtom, xAtom } from "@src/atoms";
+import { consentAtom, widthAtom, xAtom } from "@src/atoms";
 import { nav } from "@src/data";
-import { PostMeta, Slugs } from "@src/types";
+import { ConsentParams, PostMeta, Slugs } from "@src/types";
 import clsx from "clsx";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";
@@ -60,17 +60,21 @@ function Locale({ posts }: { posts: PostMeta[] }) {
 }
 
 export default function Navbar({ posts }: { posts: PostMeta[] }) {
-  const [_deny, setDeny] = useAtom(denyAtom);
   const [_consent, setConsent] = useAtom(consentAtom);
+  const resetCookies = () => {
+    setConsent(null);
+    gtag("consent", "update", {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      personalization_storage: "denied",
+    } as ConsentParams);
+  };
   return (
     <nav className="sticky top-0 z-30 bg-zinc-900 bg-opacity-90 py-3 backdrop-blur-md">
       <div className="flex w-full items-center justify-between px-4">
         <button
           type="button"
-          onClick={() => {
-            setDeny(false);
-            setConsent(false);
-          }}
+          onClick={resetCookies}
           aria-label="cookie preferences"
         >
           <svg

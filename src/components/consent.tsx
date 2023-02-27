@@ -1,44 +1,26 @@
 import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
-import { consentAtom, denyAtom } from "@src/atoms";
+import { consentAtom } from "@src/atoms";
 import { variants } from "@src/data";
 import useLocale from "@src/hooks/useLocale";
+import { ConsentParams } from "@src/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAtom } from "jotai";
 import Link from "next/link";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 
-interface ConsentParams {
-  ad_storage?: "granted" | "denied" | undefined;
-  analytics_storage?: "granted" | "denied" | undefined;
-  wait_for_update?: number | undefined;
-  region?: string[] | undefined;
-  personalization_storage: "granted" | "denied" | undefined;
-}
-
 const TRACKING_ID = process.env.NEXT_PUBLIC_GA4_TRACKING_ID!;
 
 export default function Consent() {
   const translate = useLocale();
-  const [deny, setDeny] = useAtom(denyAtom);
   const [loading, setLoading] = useState(true);
   const [consent, setConsent] = useAtom(consentAtom);
   const acceptCookies = () => {
-    setDeny(false);
     setConsent(true);
     gtag("consent", "update", {
       ad_storage: "granted",
       analytics_storage: "granted",
       personalization_storage: "granted",
-    } as ConsentParams);
-  };
-  const denyCookies = () => {
-    setDeny(true);
-    setConsent(false);
-    gtag("consent", "update", {
-      ad_storage: "denied",
-      analytics_storage: "denied",
-      personalization_storage: "denied",
     } as ConsentParams);
   };
   useEffect(() => {
@@ -47,7 +29,7 @@ export default function Consent() {
   return (
     <>
       <AnimatePresence>
-        {!deny && !consent && !loading && (
+        {consent === null && !loading && (
           <motion.div
             variants={variants}
             initial="initial"
@@ -74,7 +56,7 @@ export default function Consent() {
                 </button>
                 <button
                   type="button"
-                  onClick={denyCookies}
+                  onClick={() => setConsent(false)}
                   className="text-sm font-semibold leading-6 text-gray-900"
                 >
                   {translate("Reject all")}
