@@ -1,5 +1,4 @@
-import { MoonIcon } from "@heroicons/react/20/solid";
-import { widthAtom, xAtom } from "@src/atoms";
+import { consentAtom, denyAtom, widthAtom, xAtom } from "@src/atoms";
 import { nav } from "@src/data";
 import { PostMeta, Slugs } from "@src/types";
 import clsx from "clsx";
@@ -14,7 +13,7 @@ function Language({
   language: string;
 }) {
   const [_x, setX] = useAtom(xAtom);
-  const { push, query, locale } = useRouter();
+  const { push, route, query, locale } = useRouter();
   const [_width, setWidth] = useAtom(widthAtom);
   const coordinates = nav[language as keyof {}] as {
     x: number;
@@ -24,6 +23,8 @@ function Language({
     ? posts.filter((post) => post.slug.includes(query.slug as string))[0].slugs[
         language as keyof Slugs
       ]
+    : route === "/policy"
+    ? "/policy"
     : "/";
   return (
     <button
@@ -59,10 +60,19 @@ function Locale({ posts }: { posts: PostMeta[] }) {
 }
 
 export default function Navbar({ posts }: { posts: PostMeta[] }) {
+  const [_deny, setDeny] = useAtom(denyAtom);
+  const [_consent, setConsent] = useAtom(consentAtom);
   return (
     <nav className="sticky top-0 z-30 bg-zinc-900 bg-opacity-90 py-3 backdrop-blur-md">
       <div className="flex w-full items-center justify-between px-4">
-        <button type="button" aria-label="cookie preferences">
+        <button
+          type="button"
+          onClick={() => {
+            setDeny(false);
+            setConsent(false);
+          }}
+          aria-label="cookie preferences"
+        >
           <svg
             width="20"
             height="20"
