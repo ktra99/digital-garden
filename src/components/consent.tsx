@@ -28,6 +28,14 @@ export default function Consent() {
     gtag("consent", "update", {
       ad_storage: "granted",
       analytics_storage: "granted",
+      personalization_storage: "granted",
+    } as ConsentParams);
+  };
+  const denyCookies = () => {
+    setDeny(true);
+    gtag("consent", "update", {
+      ad_storage: "denied",
+      analytics_storage: "denied",
       personalization_storage: "denied",
     } as ConsentParams);
   };
@@ -64,7 +72,7 @@ export default function Consent() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setDeny(true)}
+                  onClick={denyCookies}
                   className="text-sm font-semibold leading-6 text-gray-900"
                 >
                   {translate("Reject all")}
