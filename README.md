@@ -20,6 +20,7 @@ This is my digital garden built on Next.js and MDX. Feel free to contribute and 
 - Scroll indicator
 - Syntax highlighting (dracula theme)
 - Comment section (utteranc.es)
+- Mouse follower (Cuberto)
 
 ## Stack
 
@@ -30,14 +31,18 @@ This is my digital garden built on Next.js and MDX. Feel free to contribute and 
 - Framer-motion
 - Remark-GFM
 - Rehype-highlight
+- Jotai
 
 ## To-do
 
 - [x] Navigation
-- [x] Dashboard
+- [x] Stats
 - [x] Projects section
 - [x] Contact link
+- [x] Cookie policy
 - [ ] Set up newsletter
+- [ ] Likes & views for each blog post
+- [ ] Branding section + page
 
 ## License
 
