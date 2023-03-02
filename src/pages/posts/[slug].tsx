@@ -4,6 +4,7 @@ import { Post as PostFooter } from "@src/components/footer";
 import { Checkbox, Code } from "@src/components/mdx";
 import Navbar from "@src/components/navbar";
 import { pageVariants } from "@src/data";
+import useScroll from "@src/hooks/useScroll";
 import { getAllPosts, getPostFromSlug } from "@src/pages/api";
 import { MDXPost, PostMeta } from "@src/types";
 import { motion } from "framer-motion";
@@ -11,9 +12,9 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import useScroll from "@src/hooks/useScroll";
 import rehypeHighlight from "rehype-highlight";
 import remarkGFM from "remark-gfm";
 
@@ -83,7 +84,10 @@ export default function Post({
             {post.meta.title}
           </h1>
           <div id="mdx" className="w-full space-y-6 font-sans text-white">
-            <MDXRemote {...post.source} components={{ Code, Checkbox }} />
+            <MDXRemote
+              {...post.source}
+              components={{ Code, Image, Checkbox }}
+            />
             <hr />
           </div>
         </div>
