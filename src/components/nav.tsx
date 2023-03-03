@@ -77,7 +77,7 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
     posts
       .filter((item) => item.locale === locale)
       .findIndex((item) => item.slug === post.meta.slug) + 1
-  ].slug;
+  ]?.slug;
   return (
     <AnimatePresence>
       {scrollPosition > 3 && scrollPosition < 93 && (
