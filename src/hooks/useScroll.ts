@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function useScroll(){
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -14,5 +14,5 @@ export default function useScroll(){
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  return scrollPosition
+  return [scrollPosition, setScrollPosition] as const
 }

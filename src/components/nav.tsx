@@ -72,7 +72,7 @@ export function Mobile() {
 
 export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
   const { locale } = useRouter();
-  const scrollPosition = useScroll();
+  const [scrollPosition] = useScroll();
   const nextPost = posts.filter((item) => item.locale === locale)[
     posts
       .filter((item) => item.locale === locale)

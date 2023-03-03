@@ -4,6 +4,13 @@ import { ConsentParams, PostMeta, Slugs } from "@src/types";
 import clsx from "clsx";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";
+import {
+  PaintBrushIcon,
+  FolderIcon,
+  SwatchIcon,
+  PhotoIcon,
+} from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 function Language({
   posts,
@@ -91,7 +98,21 @@ export default function Navbar({ posts }: { posts: PostMeta[] }) {
             />
           </svg>
         </button>
-        <Locale posts={posts} />
+        <div className="flex items-center space-x-6">
+          <Link href="#">
+            <SwatchIcon className="h-5 w-5 text-white" />
+          </Link>
+          <Link href="#">
+            <PhotoIcon className="h-5 w-5 text-white" />
+          </Link>
+          <Link href="#">
+            <FolderIcon className="h-5 w-5 text-white" />
+          </Link>
+          <Link href="#">
+            <PaintBrushIcon className="h-5 w-5 text-white" />
+          </Link>
+          <Locale posts={posts} />
+        </div>
       </div>
     </nav>
   );

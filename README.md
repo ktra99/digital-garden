@@ -35,7 +35,6 @@ This is my digital garden built on Next.js and MDX. Feel free to contribute and 
 
 ## To-do
 
-- [x] Navigation
 - [x] Stats
 - [x] Projects section
 - [x] Contact link
@@ -43,6 +42,10 @@ This is my digital garden built on Next.js and MDX. Feel free to contribute and 
 - [ ] Set up newsletter
 - [ ] Likes & views for each blog post
 - [ ] Branding section + page
+- [ ] Navigation
+- [ ] Moodboard
+- [ ] Image gallery
+- [ ] Interactive kanban board
 
 ## License
 
