@@ -158,7 +158,7 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
                 <button
                   type="button"
                   onClick={() => window.scrollTo(0, 0)}
-                  aria-label="next"
+                  aria-label="up"
                   className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-[#242427] transition duration-300 hover:border-white"
                 >
                   <ArrowLongUpIcon className="h-6 w-6 text-white/40 transition duration-300 group-hover:text-white" />

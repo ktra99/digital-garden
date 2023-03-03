@@ -42,7 +42,7 @@ export default function Consent() {
                 {translate(
                   "Hey there! I use cookies to provide you with a better browsing experience and to personalize content and ads. By clicking 'Accept,' you consent to my use of cookies. To learn more, please check out my privacy policy."
                 )}
-                <Link href="/policy">
+                <Link href="/policy" aria-label="policy">
                   <ArrowLongRightIcon className="ml-2 inline h-6 w-6" />
                 </Link>
               </p>

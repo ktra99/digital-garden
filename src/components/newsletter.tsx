@@ -43,9 +43,9 @@ export default function Newsletter() {
                 aria-hidden="true"
               />
             </div>
-            <h4 className="mt-4 font-semibold text-white">
+            <h2 className="mt-4 font-semibold text-white">
               {translate("Weekly articles")}
-            </h4>
+            </h2>
             <p className="mt-2 leading-7 text-white">
               {translate("Stay informed and inspired every week!")}
             </p>
@@ -57,9 +57,9 @@ export default function Newsletter() {
                 aria-hidden="true"
               />
             </div>
-            <h4 className="mt-4 font-semibold text-white">
+            <h2 className="mt-4 font-semibold text-white">
               {translate("No spam")}
-            </h4>
+            </h2>
             <p className="mt-2 leading-7 text-white">
               {translate(
                 "I'll never share your information or spam your inbox."

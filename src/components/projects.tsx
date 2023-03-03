@@ -11,9 +11,9 @@ export default function Projects({ cursor }: { cursor: MouseFollower | null }) {
         <h2 className="text-4xl font-bold leading-10 tracking-tight text-white">
           {translate("Projects")}
         </h2>
-        <dl className="mt-10 space-y-6 divide-y divide-white">
+        <div className="mt-10 space-y-6 divide-y divide-white">
           {projects.map((project) => (
-            <dt
+            <div
               key={project.href}
               className="pt-6"
               onMouseEnter={() => cursor?.setImg(project.image)}
@@ -25,6 +25,7 @@ export default function Projects({ cursor }: { cursor: MouseFollower | null }) {
                 </span>
                 <a
                   href={project.href}
+                  aria-label={project.name}
                   className="absolute inset-0 z-20 flex h-7 items-center"
                   target="_blank"
                   rel="noreferrer"
@@ -32,9 +33,9 @@ export default function Projects({ cursor }: { cursor: MouseFollower | null }) {
                   <ArrowTopRightOnSquareIcon className="ml-auto h-6 w-6" />
                 </a>
               </div>
-            </dt>
+            </div>
           ))}
-        </dl>
+        </div>
       </div>
       <span id="projects" className="absolute -top-20"></span>
     </div>

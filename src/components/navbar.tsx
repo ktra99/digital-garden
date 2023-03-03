@@ -209,6 +209,7 @@ export default function Navbar({ posts }: { posts: PostMeta[] }) {
               <button
                 key={item.name}
                 type="button"
+                aria-label={item.name}
                 onClick={() => push(item.href)}
                 disabled={!item.finished}
               >
