@@ -4,7 +4,6 @@ import { Post as PostFooter } from "@src/components/footer";
 import { Checkbox, Code } from "@src/components/mdx";
 import Navbar from "@src/components/navbar";
 import { pageVariants } from "@src/data";
-import useScroll from "@src/hooks/useScroll";
 import { getAllPosts, getPostFromSlug } from "@src/pages/api";
 import { MDXPost, PostMeta } from "@src/types";
 import { motion } from "framer-motion";
@@ -17,6 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import rehypeHighlight from "rehype-highlight";
 import remarkGFM from "remark-gfm";
+import { Blog as BlogNav } from "@src/components/nav";
 
 export default function Post({
   post,
@@ -25,7 +25,6 @@ export default function Post({
   post: MDXPost;
   posts: PostMeta[];
 }) {
-  const scrollPosition = useScroll();
   const { asPath, query, locale } = useRouter();
   const canonical = `https://ktra99.dev` + asPath;
   return (
@@ -62,10 +61,6 @@ export default function Post({
         ]}
       />
       <Navbar posts={posts} />
-      <span
-        className="fixed block h-1 bg-white/80"
-        style={{ width: scrollPosition + "%" }}
-      ></span>
       <motion.main
         variants={pageVariants}
         initial="initial"
@@ -93,6 +88,7 @@ export default function Post({
         </div>
       </motion.main>
       <PostFooter />
+      <BlogNav post={post} posts={posts} />
       <Comment key={query.slug as string} />
     </>
   );

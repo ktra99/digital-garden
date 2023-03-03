@@ -20,9 +20,9 @@ function Language({
     width: number;
   }[];
   const url = query.slug
-    ? posts.filter((post) => post.slug.includes(query.slug as string))[0].slugs[
+    ? (posts.find((post) => post.slug.includes(query.slug as string))?.slugs[
         language as keyof Slugs
-      ]
+      ] as string)
     : route === "/policy"
     ? "/policy"
     : "/";
