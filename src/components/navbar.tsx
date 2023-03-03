@@ -115,7 +115,7 @@ export default function Navbar({ posts }: { posts: PostMeta[] }) {
           <Popover as="header">
             {({ open }) => (
               <>
-                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white sm:hidden">
+                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-white ring-2 ring-white hover:bg-opacity-10 focus:outline-none sm:hidden">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
