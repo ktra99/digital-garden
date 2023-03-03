@@ -4,7 +4,7 @@ import {
   ArrowLongUpIcon,
 } from "@heroicons/react/20/solid";
 import { widthAtom, xAtom } from "@src/atoms";
-import { nav, navigation, pageVariants, variants } from "@src/data";
+import { nav, navigation, variants } from "@src/data";
 import useLocale from "@src/hooks/useLocale";
 import useScroll from "@src/hooks/useScroll";
 import { MDXPost, PostMeta } from "@src/types";
@@ -97,14 +97,14 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
           </Link>
           <div className="flex w-48 items-center justify-between rounded-full bg-[#242427] py-2 px-4">
             <AnimatePresence mode="wait">
-              {scrollPosition >= 60 && nextPost?.slug ? (
+              {scrollPosition >= 75 && nextPost?.slug ? (
                 <motion.p
                   key={1}
                   variants={variants}
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="truncate py-1 text-xs text-white"
+                  className="w-32 truncate py-1 text-xs text-white"
                 >
                   {nextPost.title}
                 </motion.p>
@@ -115,7 +115,7 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="flex w-full items-center justify-center"
+                  className="flex w-full items-center justify-between"
                 >
                   <div className="w-28">
                     <span
@@ -131,10 +131,10 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
             </AnimatePresence>
           </div>
           <AnimatePresence mode="wait">
-            {scrollPosition >= 60 && nextPost?.slug ? (
+            {scrollPosition >= 75 && nextPost?.slug ? (
               <motion.div
                 key={1}
-                variants={pageVariants}
+                variants={variants}
                 initial="initial"
                 animate="animate"
                 exit="exit"
@@ -150,7 +150,7 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
             ) : (
               <motion.div
                 key={2}
-                variants={pageVariants}
+                variants={variants}
                 initial="initial"
                 animate="animate"
                 exit="exit"
