@@ -77,7 +77,7 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
     posts
       .filter((item) => item.locale === locale)
       .findIndex((item) => item.slug === post.meta.slug) + 1
-  ]?.slug;
+  ];
   return (
     <AnimatePresence>
       {scrollPosition > 3 && scrollPosition < 93 && (
@@ -96,16 +96,42 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
             <ArrowLongLeftIcon className="h-6 w-6 text-white/40 transition duration-300 group-hover:text-white" />
           </Link>
           <div className="flex w-48 items-center justify-between rounded-full bg-[#242427] py-2 px-4">
-            <div className="w-28">
-              <span
-                className="block h-1 rounded-full bg-white/80"
-                style={{ width: scrollPosition + "%" }}
-              ></span>
-            </div>
-            <span className="text-white">{scrollPosition.toFixed(0)}%</span>
+            <AnimatePresence mode="wait">
+              {scrollPosition >= 60 && nextPost?.slug ? (
+                <motion.p
+                  key={1}
+                  variants={variants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="truncate py-1 text-xs text-white"
+                >
+                  {nextPost.title}
+                </motion.p>
+              ) : (
+                <motion.div
+                  key={2}
+                  variants={variants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="flex w-full items-center justify-center"
+                >
+                  <div className="w-28">
+                    <span
+                      className="block h-1 rounded-full bg-white/80"
+                      style={{ width: scrollPosition + "%" }}
+                    ></span>
+                  </div>
+                  <span className="text-white">
+                    {scrollPosition.toFixed(0)}%
+                  </span>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           <AnimatePresence mode="wait">
-            {scrollPosition >= 60 && nextPost ? (
+            {scrollPosition >= 60 && nextPost?.slug ? (
               <motion.div
                 key={1}
                 variants={pageVariants}
@@ -114,7 +140,7 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
                 exit="exit"
               >
                 <Link
-                  href={"/" + locale + "/posts/" + nextPost}
+                  href={"/" + locale + "/posts/" + nextPost.slug}
                   aria-label="next"
                   className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-[#242427] transition duration-300 hover:border-white"
                 >
