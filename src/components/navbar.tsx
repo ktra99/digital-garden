@@ -55,7 +55,9 @@ function Language({
         });
       }}
       className={clsx(
-        locale === language ? "text-white" : "text-white/50",
+        locale === language
+          ? "text-zinc-900 sm:text-white"
+          : "text-zinc-900/50 sm:text-white/50",
         "uppercase"
       )}
       disabled={locale === language}
@@ -68,7 +70,7 @@ function Language({
 function Locale({ posts }: { posts: PostMeta[] }) {
   return (
     <>
-      <div className="rounded-md bg-zinc-900 py-2 pl-3.5 text-lg font-bold text-white/50 shadow-lg">
+      <div className="mt-6 mb-3 pl-4 text-sm font-bold text-zinc-900/50 sm:my-0 sm:text-lg sm:text-white/50">
         <Language posts={posts} language="en" /> |{" "}
         <Language posts={posts} language="sv" />
       </div>
@@ -149,7 +151,7 @@ export default function Navbar({ posts }: { posts: PostMeta[] }) {
                         focus
                         className="absolute inset-x-0 top-0 z-30 mx-auto w-full max-w-3xl origin-top transform p-2 transition"
                       >
-                        <div className="divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                        <div className="divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                           <div className="pt-3 pb-2">
                             <div className="flex items-center justify-between px-4">
                               <button
@@ -194,8 +196,8 @@ export default function Navbar({ posts }: { posts: PostMeta[] }) {
                                   <span>{item.name}</span>
                                 </button>
                               ))}
-                              <Locale posts={posts} />
                             </div>
+                            <Locale posts={posts} />
                           </div>
                         </div>
                       </Popover.Panel>
