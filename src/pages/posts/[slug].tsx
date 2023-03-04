@@ -75,7 +75,7 @@ export default function Post({
           >
             <ArrowLongLeftIcon className="h-6 w-6 text-white/40 transition duration-300 group-hover:text-white" />
           </Link>
-          <h1 className="my-6 text-[1.75rem] font-bold leading-[2.5rem] text-white xs:my-12 xs:text-5xl xs:leading-[4rem]">
+          <h1 className="my-6 text-[1.75rem] font-bold leading-[2.5rem] text-white xs:text-5xl xs:leading-[4rem] sm:my-12">
             {post.meta.title}
           </h1>
           <div id="mdx" className="w-full space-y-6 font-sans text-white">

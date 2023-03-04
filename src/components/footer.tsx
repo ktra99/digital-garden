@@ -6,8 +6,8 @@ export function Page() {
   return (
     <footer className="mx-auto my-4 px-4 sm:max-w-[33rem] sm:px-0 xl:max-w-7xl">
       <hr />
-      <div className="mt-4 mb-24 flex items-center justify-between xs:mb-32 sm:mt-6">
-        <mark className="block bg-transparent font-semibold text-white xs:text-lg">
+      <div className="mt-4 mb-24 flex flex-col justify-between xs:mb-32 sm:mt-6 sm:flex-row sm:items-center">
+        <mark className="mb-2.5 block bg-transparent font-semibold text-white xs:text-lg sm:mb-0">
           © {new Date().getFullYear() + " Kenny Tran."} {""}
           {translate("All rights reserved.")}
         </mark>
@@ -29,9 +29,9 @@ export function Page() {
 export function Post() {
   const translate = useLocale();
   return (
-    <footer className="mx-auto mb-4 max-w-3xl px-4 font-semibold text-white xs:mt-4 xs:mb-16 xs:text-lg">
-      <div className="flex items-center justify-between">
-        <mark className="bg-transparent text-white">
+    <footer className="mx-auto mb-4 max-w-3xl px-4 font-semibold text-white xs:mt-2.5 xs:mb-16 xs:text-lg">
+      <div className="flex flex-col justify-between sm:flex-row sm:items-center">
+        <mark className="mb-2.5 bg-transparent text-white xs:mb-4 sm:mb-0">
           © {new Date().getFullYear() + " Kenny Tran."} {""}
           {translate("All rights reserved.")}
         </mark>

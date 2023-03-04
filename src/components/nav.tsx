@@ -95,7 +95,7 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
           >
             <ArrowLongLeftIcon className="h-6 w-6 text-white/40 transition duration-300 group-hover:text-white" />
           </Link>
-          <div className="flex w-48 items-center justify-between rounded-full bg-[#242427] py-2 px-4">
+          <div className="flex w-32 items-center justify-between rounded-full bg-[#242427] py-2 px-4 xs:w-48">
             <AnimatePresence mode="wait">
               {scrollPosition >= 75 && nextPost?.slug ? (
                 <motion.p
@@ -104,7 +104,7 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="w-32 truncate py-1 text-xs text-white"
+                  className="w-16 truncate py-1 text-xs text-white xs:w-32"
                 >
                   {nextPost.title}
                 </motion.p>
@@ -117,7 +117,7 @@ export function Blog({ post, posts }: { post: MDXPost; posts: PostMeta[] }) {
                   exit="exit"
                   className="flex w-full items-center justify-between"
                 >
-                  <div className="w-28">
+                  <div className="w-14 xs:w-28">
                     <span
                       className="block h-1 rounded-full bg-white/80"
                       style={{ width: scrollPosition + "%" }}
