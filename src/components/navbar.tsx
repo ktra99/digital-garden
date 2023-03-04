@@ -70,8 +70,9 @@ function Language({
 function Locale({ posts }: { posts: PostMeta[] }) {
   return (
     <>
-      <div className="mt-6 mb-3 pl-5 pt-0.5 text-sm font-bold text-zinc-900/50 sm:my-0 sm:text-lg sm:text-white/50">
-        <Language posts={posts} language="en" /> |{" "}
+      <div className="mt-6 mb-3 pl-5 font-sans text-xs font-bold text-zinc-900/50 sm:mt-0 sm:mb-0 sm:text-base sm:text-white/50">
+        <Language posts={posts} language="en" />
+        <span className="mx-2">|</span>
         <Language posts={posts} language="sv" />
       </div>
     </>
