@@ -70,7 +70,7 @@ function Language({
 function Locale({ posts }: { posts: PostMeta[] }) {
   return (
     <>
-      <div className="mt-6 mb-3 pl-4 text-sm font-bold text-zinc-900/50 sm:my-0 sm:text-lg sm:text-white/50">
+      <div className="mt-6 mb-3 pl-5 pt-0.5 text-sm font-bold text-zinc-900/50 sm:my-0 sm:text-lg sm:text-white/50">
         <Language posts={posts} language="en" /> |{" "}
         <Language posts={posts} language="sv" />
       </div>
@@ -153,7 +153,16 @@ export default function Navbar({ posts }: { posts: PostMeta[] }) {
                       >
                         <div className="divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                           <div className="pt-3 pb-2">
-                            <div className="flex items-center justify-between px-4">
+                            <div className="flex flex-row-reverse items-center justify-between px-4">
+                              <div className="-mr-2">
+                                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
+                                  <span className="sr-only">Close menu</span>
+                                  <XMarkIcon
+                                    className="h-6 w-6"
+                                    aria-hidden="true"
+                                  />
+                                </Popover.Button>
+                              </div>
                               <button
                                 type="button"
                                 onClick={resetCookies}
@@ -173,17 +182,8 @@ export default function Navbar({ posts }: { posts: PostMeta[] }) {
                                   />
                                 </svg>
                               </button>
-                              <div className="-mr-2">
-                                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
-                                  <span className="sr-only">Close menu</span>
-                                  <XMarkIcon
-                                    className="h-6 w-6"
-                                    aria-hidden="true"
-                                  />
-                                </Popover.Button>
-                              </div>
                             </div>
-                            <div className="mt-3 space-y-1 px-1.5">
+                            <div className="mt-3 space-y-1 px-1">
                               {navigation.map((item) => (
                                 <button
                                   key={item.name}
