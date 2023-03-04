@@ -11,7 +11,6 @@ import { nav } from "@src/data";
 import { ConsentParams, PostMeta, Slugs } from "@src/types";
 import clsx from "clsx";
 import { useAtom } from "jotai";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 
