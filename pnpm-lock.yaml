@@ -33,6 +33,7 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.2.2
   react: 18.2.0
   react-dom: 18.2.0
+  react-github-btn: ^1.4.0
   rehype-highlight: ^6.0.0
   remark-gfm: ^3.0.1
   sass: ^1.58.3
@@ -69,6 +70,7 @@ dependencies:
   next-superjson: 0.0.4_6n626ceucgutltfcrvnaxeawg4
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-github-btn: 1.4.0_react@18.2.0
   rehype-highlight: 6.0.0
   remark-gfm: 3.0.1
   sass: 1.58.3
@@ -2224,6 +2226,10 @@ packages:
     resolution: {integrity: sha512-YCcF28IqSay3fqpIu5y3Krg/utCBHBeoflkZyHj/QcqI2nrLPC3ZegS9CmIo+hJb8K7aiGsuUl7PwWVjNG2HQQ==}
     dev: false
 
+  /github-buttons/2.24.0:
+    resolution: {integrity: sha512-dHpEno4S2JHjsEKPLSTGDTV50q1d08n3H7VDfNNA1m8cz5DMqLCZDdKWQxy4zyvd6M3tKvlVYLs+/H0BF3DggA==}
+    dev: false
+
   /github-from-package/0.0.0:
     resolution: {integrity: sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==}
     dev: false
@@ -4065,6 +4071,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-github-btn/1.4.0_react@18.2.0:
+    resolution: {integrity: sha512-lV4FYClAfjWnBfv0iNlJUGhamDgIq6TayD0kPZED6VzHWdpcHmPfsYOZ/CFwLfPv4Zp+F4m8QKTj0oy2HjiGXg==}
+    peerDependencies:
+      react: '>=16.3.0'
+    dependencies:
+      github-buttons: 2.24.0
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:
