@@ -14,7 +14,7 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
   const [tags] = useAtom(tagAtom);
   const [_, setCommand] = useAtom(commandAtom);
   return (
-    <div className="order-2 mt-0 mb-4 grid grid-cols-2 gap-4 xl:mb-10 xl:mt-12">
+    <div className="order-2 mt-0 mb-4 grid gap-4 sm:grid-cols-2 xl:mb-10 xl:mt-12">
       <AnimatePresence>
         {tags.length > 0 ? (
           <>
@@ -34,7 +34,7 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
               animate="animate"
               exit="exit"
             >
-              <div className="relative h-full min-h-[9rem] rounded-md bg-white/5 p-6 ring-1 ring-white/10">
+              <div className="relative h-full rounded-md bg-white/5 p-6 ring-1 ring-white/10 sm:min-h-[9rem]">
                 <div className="flex h-full max-w-[30rem] items-center justify-center">
                   <h2 className="text-xs font-bold text-white/80 xs:text-base sm:text-xl">
                     {translate("View more")}
@@ -64,7 +64,7 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
               animate="animate"
               exit="exit"
             >
-              <div className="relative h-full min-h-[9rem] rounded-md bg-white/5 p-6 ring-1 ring-white/10">
+              <div className="relative h-full rounded-md bg-white/5 p-6 ring-1 ring-white/10 sm:min-h-[9rem]">
                 <div className="flex h-full max-w-[30rem] items-center justify-center">
                   <h2 className="text-xs font-bold text-white/80 xs:text-base sm:text-xl">
                     {translate("View more")}
