@@ -26,7 +26,7 @@ specifiers:
   next: 13.2.3
   next-mdx-remote: ^4.3.0
   next-seo: ^5.15.0
-  next-sitemap: ^3.1.49
+  next-sitemap: ^4.0.0
   next-superjson: ^0.0.4
   postcss: ^8.4.21
   prettier: ^2.8.3
@@ -66,7 +66,7 @@ dependencies:
   next: 13.2.3_wiv434v7erz4aedd5whhdwmpv4
   next-mdx-remote: 4.3.0_biqbaboplfbrettd7655fr4n2y
   next-seo: 5.15.0_nvzgbose6yf6w7ijjprgspqefi
-  next-sitemap: 3.1.49_t6ruxyqmqm2dvfvfin56kon7ku
+  next-sitemap: 4.0.1_t6ruxyqmqm2dvfvfin56kon7ku
   next-superjson: 0.0.4_6n626ceucgutltfcrvnaxeawg4
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1530,7 +1530,7 @@ packages:
     dependencies:
       acorn-node: 1.8.2
       defined: 1.0.1
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: true
 
   /didyoumean/1.2.2:
@@ -2784,7 +2784,7 @@ packages:
     resolution: {integrity: sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==}
     hasBin: true
     dependencies:
-      minimist: 1.2.7
+      minimist: 1.2.8
     dev: false
 
   /json5/2.2.3:
@@ -3481,8 +3481,8 @@ packages:
       brace-expansion: 2.0.1
     dev: false
 
-  /minimist/1.2.7:
-    resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
+  /minimist/1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
   /mkdirp-classic/0.5.3:
     resolution: {integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==}
@@ -3551,8 +3551,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next-sitemap/3.1.49_t6ruxyqmqm2dvfvfin56kon7ku:
-    resolution: {integrity: sha512-bxBq+MQdi580PKn/8ert4X0RL8Kp9scvyiq6TmIpkCQC3bd4DResTyxHY2AuCGKz83ut2udHwKMZu3ztj3aq3w==}
+  /next-sitemap/4.0.1_t6ruxyqmqm2dvfvfin56kon7ku:
+    resolution: {integrity: sha512-dY6vKE/uayNYSfhXA64U9NZYSJtFzK01oBouY+XqgQieksKBG9BWNmq8yGSJUermyux4wCnNa9gLHwSk38emhA==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
@@ -3561,7 +3561,7 @@ packages:
     dependencies:
       '@corex/deepmerge': 4.0.37
       '@next/env': 13.1.6
-      minimist: 1.2.7
+      minimist: 1.2.8
       next: 13.2.3_wiv434v7erz4aedd5whhdwmpv4
     dev: false
 
@@ -3941,7 +3941,7 @@ packages:
       detect-libc: 2.0.1
       expand-template: 2.0.3
       github-from-package: 0.0.0
-      minimist: 1.2.7
+      minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 1.0.2
       node-abi: 3.31.0
@@ -4059,7 +4059,7 @@ packages:
     dependencies:
       deep-extend: 0.6.0
       ini: 1.3.8
-      minimist: 1.2.7
+      minimist: 1.2.8
       strip-json-comments: 2.0.1
     dev: false
 
@@ -4659,7 +4659,7 @@ packages:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.2
-      minimist: 1.2.7
+      minimist: 1.2.8
       strip-bom: 3.0.0
     dev: false
 
