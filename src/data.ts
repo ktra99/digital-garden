@@ -57,6 +57,11 @@ const transition: Transition = {
   ease: "easeOut",
 };
 
+const svgTransition: Transition = {
+  duration: 1,
+  ease: "easeIn",
+}
+
 const pageTransition: Transition = {
   duration: 0.5,
   ease: "easeInOut",
@@ -75,6 +80,17 @@ export const variants: Variants = {
     transition,
   },
 };
+
+export const svgVariants: Variants = {
+  initial: {
+    pathLength: 0,
+    transition: svgTransition
+  },
+  animate: {
+    pathLength: 1,
+    transition: svgTransition
+  }
+}
 
 export const pageVariants: Variants = {
   initial: {

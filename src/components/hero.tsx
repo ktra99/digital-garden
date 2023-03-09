@@ -3,6 +3,8 @@ import Header from "@src/components/header";
 import { Desktop as DesktopTags } from "@src/components/tags";
 import { PostMeta } from "@src/types";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { svgVariants } from "@src/data";
 
 export function Tablet({ posts }: { posts: PostMeta[] }) {
   return (
@@ -36,17 +38,26 @@ export function Tablet({ posts }: { posts: PostMeta[] }) {
             {"That's me"}
           </text>
           <g strokeLinecap="round">
-            <path
+            <motion.path
+              variants={svgVariants}
+              initial="initial"
+              animate="animate"
               d="M109.155 9.996c11.52 7.96 72.14 33.28 68.23 49.5-3.9 16.22-76.59 39.64-91.66 47.84m21.85-95.1c11.55 8.57 72.72 32.16 69.46 48.17-3.26 16.01-74.05 40.21-89.01 47.9"
               stroke="#000"
               fill="none"
             />
-            <path
+            <motion.path
+              variants={svgVariants}
+              initial="initial"
+              animate="animate"
               d="M108.745 89.736c-5.15.39-8.82 6.7-19.54 16.8m20.79-19.66c-4.63 5.87-9.55 9.55-21.5 20.94"
               stroke="#000"
               fill="none"
             />
-            <path
+            <motion.path
+              variants={svgVariants}
+              initial="initial"
+              animate="animate"
               d="M116.765 108.616c-6.98-3.53-12.3-1.15-27.56-2.08m28.82-.77c-6.25 1.72-12.96 1.18-29.53 2.05"
               stroke="#000"
               fill="none"
