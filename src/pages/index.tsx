@@ -1,8 +1,6 @@
-import { widthAtom, xAtom } from "@src/atoms";
 import Command from "@src/components/command";
 import { Page as PageFooter } from "@src/components/footer";
 import { Hero, Tablet as TabletHero } from "@src/components/hero";
-import { Mobile as MobileNav } from "@src/components/nav";
 import Navbar from "@src/components/navbar";
 import Newsletter from "@src/components/newsletter";
 import Posts from "@src/components/posts";
@@ -15,7 +13,6 @@ import { getAllPosts } from "@src/pages/api";
 import { PostMeta } from "@src/types";
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { useAtom } from "jotai";
 import MouseFollower from "mouse-follower";
 import { GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
@@ -27,8 +24,6 @@ MouseFollower.registerGSAP(gsap);
 export default function Home({ posts }: { posts: PostMeta[] }) {
   const translate = useLocale();
   const { locale } = useRouter();
-  const [_x, setX] = useAtom(xAtom);
-  const [width, setWidth] = useAtom(widthAtom);
   const [cursor, setCursor] = useState<MouseFollower | null>(null);
   useEffect(() => {
     if (document.querySelectorAll(".mf-cursor").length) return;
@@ -37,12 +32,6 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
       document.querySelector(".mf-cursor")?.remove();
     };
   }, []);
-  useEffect(() => {
-    if (width === 0) {
-      setX(locale === "en" ? 0 : 0.05);
-      setWidth(locale === "en" ? 4 : 3.5);
-    }
-  }, [width, locale, setX, setWidth]);
   return (
     <>
       <NextSeo
@@ -103,7 +92,6 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
         </div>
       </motion.main>
       <PageFooter />
-      <MobileNav />
     </>
   );
 }

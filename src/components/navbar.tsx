@@ -6,8 +6,7 @@ import {
   SwatchIcon,
 } from "@heroicons/react/20/solid";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { consentAtom, widthAtom, xAtom } from "@src/atoms";
-import { nav } from "@src/data";
+import { consentAtom } from "@src/atoms";
 import { ConsentParams, PostMeta, Slugs } from "@src/types";
 import clsx from "clsx";
 import { useAtom } from "jotai";
@@ -28,13 +27,7 @@ function Language({
   posts: PostMeta[];
   language: string;
 }) {
-  const [_x, setX] = useAtom(xAtom);
   const { push, route, query, locale } = useRouter();
-  const [_width, setWidth] = useAtom(widthAtom);
-  const coordinates = nav[language as keyof {}] as {
-    x: number;
-    width: number;
-  }[];
   const url = query.slug
     ? (posts.find((post) => post.slug.includes(query.slug as string))?.slugs[
         language as keyof Slugs
@@ -45,14 +38,12 @@ function Language({
   return (
     <button
       type="button"
-      onClick={() => {
-        setX(coordinates[0].x);
-        setWidth(coordinates[0].width);
+      onClick={() =>
         push(url, url, {
           locale: language,
           scroll: false,
-        });
-      }}
+        })
+      }
       className={clsx(
         locale === language
           ? "text-zinc-900 sm:text-white"
@@ -69,9 +60,8 @@ function Language({
 function Locale({ posts }: { posts: PostMeta[] }) {
   return (
     <>
-      <div className="mt-6 mb-3 pl-[1.15rem] font-sans text-xs font-bold text-zinc-900/50 sm:mt-0 sm:mb-0 sm:text-base sm:text-white/50">
+      <div className="mt-6 mb-3 space-x-4 pl-[1.15rem] font-sans text-xs font-bold text-zinc-900/50 sm:mt-0 sm:mb-0 sm:text-base sm:text-white/50">
         <Language posts={posts} language="en" />
-        <span className="mx-2">|</span>
         <Language posts={posts} language="sv" />
       </div>
     </>

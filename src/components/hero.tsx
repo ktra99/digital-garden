@@ -1,6 +1,5 @@
 import Avatar from "@public/avatar.png";
 import Header from "@src/components/header";
-import { Desktop as DesktopNav } from "@src/components/nav";
 import { Desktop as DesktopTags } from "@src/components/tags";
 import { PostMeta } from "@src/types";
 import Image from "next/image";
@@ -13,7 +12,6 @@ export function Tablet({ posts }: { posts: PostMeta[] }) {
       </div>
       <div className="hidden sm:mt-12 sm:block xl:hidden">
         <Header />
-        <DesktopNav />
       </div>
       <DesktopTags posts={posts} />
     </div>
@@ -24,7 +22,6 @@ export function Hero() {
   return (
     <div className="block sm:mt-12 sm:hidden xl:block">
       <Header />
-      <DesktopNav />
     </div>
   );
 }
