@@ -8,16 +8,6 @@ export interface ConsentParams {
   personalization_storage: "granted" | "denied" | undefined;
 }
 
-export type Post = {
-  meta: PostMeta
-  content: string
-}
-
-export type Slugs = {
-  en: string
-  sv: string
-}
-
 export type PostMeta = {
   slug: string
   title: string
@@ -35,3 +25,13 @@ export type MDXPost = {
   >;
   meta: PostMeta;
 };
+
+export type Post = {
+  meta: PostMeta
+  content: string
+}
+
+export type Slugs = {
+  en: string
+  sv: string
+}
