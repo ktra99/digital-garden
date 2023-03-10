@@ -5,12 +5,12 @@ import {
 } from "@heroicons/react/20/solid";
 import Comment from "@src/components/comment";
 import Navbar from "@src/components/navbar";
-import { pageVariants } from "@src/pages";
 import useLocale from "@src/hooks/useLocale";
 import useScroll from "@src/hooks/useScroll";
+import { pageVariants } from "@src/pages";
 import { getAllPosts, getPostFromSlug } from "@src/pages/api";
 import { MDXPost, PostMeta } from "@src/types";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Transition, Variants } from "framer-motion";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
@@ -21,7 +21,6 @@ import { useRouter } from "next/router";
 import GitHubButton from "react-github-btn";
 import rehypeHighlight from "rehype-highlight";
 import remarkGFM from "remark-gfm";
-import { Transition, Variants } from "framer-motion";
 
 export const fadeTransition: Transition = {
   duration: 0.25,
@@ -176,7 +175,7 @@ function Checkbox({ header, excerpt }: { header: string; excerpt: string }) {
   );
 }
 
-function Footer() {
+export function Footer() {
   const translate = useLocale();
   return (
     <footer className="mx-auto mb-4 max-w-3xl px-4 xs:mt-2.5 xs:mb-16">

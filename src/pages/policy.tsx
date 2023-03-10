@@ -1,10 +1,10 @@
-import Navbar from "@src/components/navbar";
-import { motion } from "framer-motion";
-import { pageVariants } from "@src/data";
-import Link from "next/link";
 import { ArrowLongLeftIcon } from "@heroicons/react/20/solid";
-import { Post as PostFooter } from "@src/components/footer";
+import Navbar from "@src/components/navbar";
 import useLocale from "@src/hooks/useLocale";
+import { pageVariants } from "@src/pages/";
+import { Footer } from "@src/pages/posts/[slug]";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Policy() {
   const translate = useLocale();
@@ -88,7 +88,7 @@ export default function Policy() {
           </div>
         </div>
       </motion.main>
-      <PostFooter />
+      <Footer />
     </>
   );
 }
