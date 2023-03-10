@@ -38,6 +38,98 @@ function Cookie(props: { className: string }) {
   );
 }
 
+function Dropdown({
+  posts,
+  resetCookies,
+}: {
+  posts: PostMeta[];
+  resetCookies: () => void;
+}) {
+  const { push } = useRouter();
+  return (
+    <Popover as="header">
+      {({ open }) => (
+        <>
+          <Popover.Button className="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-white ring-2 ring-white hover:bg-opacity-10 focus:outline-none sm:hidden">
+            <span className="sr-only">Open main menu</span>
+            {open ? (
+              <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+            ) : (
+              <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+            )}
+          </Popover.Button>
+
+          <Transition.Root as={Fragment}>
+            <div className="sm:hidden">
+              <Transition.Child
+                as={Fragment}
+                enter="duration-150 ease-out"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="duration-150 ease-in"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Popover.Overlay className="fixed inset-0 z-20 bg-black bg-opacity-25" />
+              </Transition.Child>
+
+              <Transition.Child
+                as={Fragment}
+                enter="duration-150 ease-out"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="duration-150 ease-in"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Popover.Panel
+                  focus
+                  className="absolute inset-x-0 top-0 z-30 mx-auto w-full max-w-3xl origin-top transform p-2 transition"
+                >
+                  <div className="divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div className="pt-3 pb-2">
+                      <div className="flex flex-row-reverse items-center justify-between px-4">
+                        <div className="-mr-2">
+                          <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500">
+                            <span className="sr-only">Close menu</span>
+                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                          </Popover.Button>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={resetCookies}
+                          aria-label="cookie preferences"
+                        >
+                          <Cookie className="text-zinc-900/80" />
+                        </button>
+                      </div>
+                      <div className="mt-3 space-y-1 px-1">
+                        {navigation.map((item) => (
+                          <button
+                            key={item.name}
+                            type="button"
+                            onClick={() => push(item.href)}
+                            disabled={!item.finished}
+                            className="flex w-full items-center space-x-3 rounded-md px-3 py-2 text-base font-medium text-zinc-900/80 hover:bg-gray-100"
+                          >
+                            <item.icon className="h-5 w-5 text-zinc-900/80" />
+                            <span>{item.name}</span>
+                          </button>
+                        ))}
+                      </div>
+                      <LanguageSwitch posts={posts} />
+                    </div>
+                  </div>
+                </Popover.Panel>
+              </Transition.Child>
+            </div>
+          </Transition.Root>
+        </>
+      )}
+    </Popover>
+  );
+}
+
 function LanguageSwitch({ posts }: { posts: PostMeta[] }) {
   const { push, route, query, locale } = useRouter();
   const handleOnClick = (language: string) => {
@@ -107,89 +199,7 @@ export default function Navbar({ posts }: { posts: PostMeta[] }) {
           <Cookie className="text-white/80" />
         </button>
         <div className="flex items-center space-x-6">
-          <Popover as="header">
-            {({ open }) => (
-              <>
-                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-white ring-2 ring-white hover:bg-opacity-10 focus:outline-none sm:hidden">
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Popover.Button>
-
-                <Transition.Root as={Fragment}>
-                  <div className="sm:hidden">
-                    <Transition.Child
-                      as={Fragment}
-                      enter="duration-150 ease-out"
-                      enterFrom="opacity-0"
-                      enterTo="opacity-100"
-                      leave="duration-150 ease-in"
-                      leaveFrom="opacity-100"
-                      leaveTo="opacity-0"
-                    >
-                      <Popover.Overlay className="fixed inset-0 z-20 bg-black bg-opacity-25" />
-                    </Transition.Child>
-
-                    <Transition.Child
-                      as={Fragment}
-                      enter="duration-150 ease-out"
-                      enterFrom="opacity-0 scale-95"
-                      enterTo="opacity-100 scale-100"
-                      leave="duration-150 ease-in"
-                      leaveFrom="opacity-100 scale-100"
-                      leaveTo="opacity-0 scale-95"
-                    >
-                      <Popover.Panel
-                        focus
-                        className="absolute inset-x-0 top-0 z-30 mx-auto w-full max-w-3xl origin-top transform p-2 transition"
-                      >
-                        <div className="divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-                          <div className="pt-3 pb-2">
-                            <div className="flex flex-row-reverse items-center justify-between px-4">
-                              <div className="-mr-2">
-                                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500">
-                                  <span className="sr-only">Close menu</span>
-                                  <XMarkIcon
-                                    className="h-6 w-6"
-                                    aria-hidden="true"
-                                  />
-                                </Popover.Button>
-                              </div>
-                              <button
-                                type="button"
-                                onClick={resetCookies}
-                                aria-label="cookie preferences"
-                              >
-                                <Cookie className="text-zinc-900/80" />
-                              </button>
-                            </div>
-                            <div className="mt-3 space-y-1 px-1">
-                              {navigation.map((item) => (
-                                <button
-                                  key={item.name}
-                                  type="button"
-                                  onClick={() => push(item.href)}
-                                  disabled={!item.finished}
-                                  className="flex w-full items-center space-x-3 rounded-md px-3 py-2 text-base font-medium text-zinc-900/80 hover:bg-gray-100"
-                                >
-                                  <item.icon className="h-5 w-5 text-zinc-900/80" />
-                                  <span>{item.name}</span>
-                                </button>
-                              ))}
-                            </div>
-                            <LanguageSwitch posts={posts} />
-                          </div>
-                        </div>
-                      </Popover.Panel>
-                    </Transition.Child>
-                  </div>
-                </Transition.Root>
-              </>
-            )}
-          </Popover>
+          <Dropdown posts={posts} resetCookies={resetCookies} />
           <div className="hidden sm:flex sm:items-center sm:space-x-6">
             {navigation.map((item) => (
               <button

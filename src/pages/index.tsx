@@ -83,6 +83,24 @@ function Arrow() {
   );
 }
 
+function Header() {
+  const translate = useLocale();
+  return (
+    <header>
+      <h2 className="text-4xl font-bold uppercase text-white xs:text-6xl sm:text-8xl">
+        Kenny Tran
+      </h2>
+      <div className="mt-3 sm:w-[33rem]">
+        <p className="text-lg leading-8 text-white">
+          {translate(
+            "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations."
+          )}
+        </p>
+      </div>
+    </header>
+  );
+}
+
 export default function Home({ posts }: { posts: PostMeta[] }) {
   const translate = useLocale();
   const { locale } = useRouter();
@@ -142,18 +160,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
         <div className="mx-auto flex max-w-7xl flex-col justify-between px-4 sm:mt-12 sm:items-center xl:flex-row xl:items-start">
           <div className="xl:order-0 order-1 mt-12 flex flex-col sm:mt-0 sm:w-[33rem] xl:w-[36rem]">
             <div className="block sm:mt-12 sm:hidden xl:block">
-              <header>
-                <h2 className="text-4xl font-bold uppercase text-white xs:text-6xl sm:text-8xl">
-                  Kenny Tran
-                </h2>
-                <div className="mt-3 sm:w-[33rem]">
-                  <p className="text-lg leading-8 text-white">
-                    {translate(
-                      "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations."
-                    )}
-                  </p>
-                </div>
-              </header>
+              <Header />
             </div>
             <Posts posts={posts} />
             <MobileTags posts={posts} />
@@ -175,18 +182,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               </div>
             </div>
             <div className="hidden sm:mt-12 sm:block xl:hidden">
-              <header>
-                <h2 className="text-4xl font-bold uppercase text-white xs:text-6xl sm:text-8xl">
-                  Kenny Tran
-                </h2>
-                <div className="mt-3 sm:w-[33rem]">
-                  <p className="text-lg leading-8 text-white">
-                    {translate(
-                      "Hey, I'm Kenny. I'm a developer based in Sweden. My strength lies in developing user friendly applications, with complex data and API integrations."
-                    )}
-                  </p>
-                </div>
-              </header>
+              <Header />
             </div>
             <DesktopTags posts={posts} />
           </div>
