@@ -1,7 +1,7 @@
 import { ArrowLongRightIcon } from "@heroicons/react/20/solid";
 import { consentAtom } from "@src/atoms";
-import { variants } from "@src/data";
 import useLocale from "@src/hooks/useLocale";
+import { fadeVariants } from "@src/pages/posts/[slug]";
 import { ConsentParams } from "@src/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAtom } from "jotai";
@@ -31,7 +31,7 @@ export default function Consent() {
       <AnimatePresence>
         {consent === null && !loading && (
           <motion.div
-            variants={variants}
+            variants={fadeVariants}
             initial="initial"
             animate="animate"
             exit="exit"

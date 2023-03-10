@@ -1,6 +1,6 @@
 import { commandAtom, tagAtom } from "@src/atoms";
-import { variants } from "@src/data";
 import useLocale from "@src/hooks/useLocale";
+import { fadeVariants } from "@src/pages/posts/[slug]";
 import { PostMeta } from "@src/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAtom } from "jotai";
@@ -13,7 +13,7 @@ function More() {
   return (
     <motion.div
       layout
-      variants={variants}
+      variants={fadeVariants}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -37,7 +37,7 @@ function Post({ post }: { post: PostMeta }) {
   return (
     <motion.div
       layout
-      variants={variants}
+      variants={fadeVariants}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -84,7 +84,7 @@ export default function Posts({ posts }: { posts: PostMeta[] }) {
               ))}
           </>
         )}
-        <More />
+        <More key={null} />
       </AnimatePresence>
     </div>
   );
